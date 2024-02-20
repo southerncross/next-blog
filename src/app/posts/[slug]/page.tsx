@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "../../../lib/api";
-import { SITE_NAME } from "../../../lib/constants";
+import { AUTHOR_AVATAR, SITE_NAME } from "../../../lib/constants";
 import markdownToHtml from "../../../lib/markdownToHtml";
 import Container from "../../_components/container";
 import Header from "../../_components/header";
@@ -24,9 +24,7 @@ export default async function Post({ params }: Params) {
         <article className="mb-32">
           <PostHeader
             title={post.title}
-            coverImage={post.coverImage}
             date={post.date}
-            author={post.author}
           />
           <PostBody content={content} />
         </article>
@@ -53,7 +51,7 @@ export function generateMetadata({ params }: Params): Metadata {
   return {
     openGraph: {
       title,
-      images: [post.ogImage.url],
+      images: [AUTHOR_AVATAR],
     },
   };
 }
