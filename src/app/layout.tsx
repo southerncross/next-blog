@@ -2,7 +2,8 @@ import Footer from "@/app/_components/footer";
 import { SITE_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 import "./globals.css";
 
@@ -47,11 +48,13 @@ export default function RootLayout({
         <meta name="theme-color" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
-      <body className={inter.className}>
-        <div className="min-h-screen">{children}</div>
-        <Footer />
-        <Analytics />
-      </body>
+      <UserProvider>
+        <body className={inter.className}>
+          <div className="min-h-screen">{children}</div>
+          <Footer />
+          <Analytics />
+        </body>
+      </UserProvider>
     </html>
   );
 }
