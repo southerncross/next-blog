@@ -14,11 +14,12 @@ export function PostHeader({ title, date }: Props) {
     <>
       <PostTitle>{title}</PostTitle>
       <div className="hidden md:block md:mb-12">
+        <Avatar name={AUTHOR_NAME} picture={AUTHOR_AVATAR} date={date} />
       </div>
-        <Avatar name={AUTHOR_NAME} picture={AUTHOR_AVATAR} date={date}/>
+
       <div className="max-w-2xl mx-auto">
         <div className="block md:hidden mb-6">
-          <Avatar name={AUTHOR_NAME} picture={AUTHOR_AVATAR} date={date}/>
+          <Avatar name={AUTHOR_NAME} picture={AUTHOR_AVATAR} date={date} />
         </div>
       </div>
     </>

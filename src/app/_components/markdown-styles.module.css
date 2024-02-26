@@ -22,7 +22,7 @@
 }
 
 .markdown pre {
-  @apply py-4 border border-solid border-slate-300;
+  @apply py-4 border border-solid border-slate-300 overflow-scroll;
 }
 
 .markdown pre [data-line] {

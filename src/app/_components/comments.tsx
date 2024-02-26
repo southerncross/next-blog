@@ -23,7 +23,7 @@ const Comments = ({
           ))}
         </ul>
       ) : (
-        <p className="ml-6 mb-12">No comments yet.</p>
+        <p className="ml-6 mb-12 text-center md:text-left">No comments yet.</p>
       )}
       <CommentForm slug={slug} />
     </section>
