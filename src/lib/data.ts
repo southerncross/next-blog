@@ -4,8 +4,8 @@ import fs from "fs";
 import matter from "gray-matter";
 import { join } from "path";
 import { sql } from "@vercel/postgres";
-import { getSession } from '@auth0/nextjs-auth0';
-import { notFound } from 'next/navigation';
+import { getSession } from "@auth0/nextjs-auth0";
+import { notFound } from "next/navigation";
 
 const postsDirectory = join(process.cwd(), "_posts");
 
@@ -35,17 +35,18 @@ export function getAllPosts(): Post[] {
 }
 
 export async function getCommentsBySlug(slug: string) {
-  const { user } = await getSession() || {};
-  const realSlug = slug.replace(/\.md$/, "");
-  const data = await sql<{
-    id: string;
-    slug: string;
-    content: string;
-    created_at: string;
-    author_sub: string;
-    author_name: string;
-    author_picture: string;
-  }>`
+  try {
+    const { user } = (await getSession()) || {};
+    const realSlug = slug.replace(/\.md$/, "");
+    const data = await sql<{
+      id: string;
+      slug: string;
+      content: string;
+      created_at: string;
+      author_sub: string;
+      author_name: string;
+      author_picture: string;
+    }>`
     SELECT
       c.id AS id,
       c.slug AS slug,
@@ -59,19 +60,23 @@ export async function getCommentsBySlug(slug: string) {
     WHERE c.slug = ${realSlug} ORDER BY c.created_at DESC
   `;
 
-  const comments = data.rows.map((row) => {
-    return {
-      id: row.id,
-      slug: row.slug,
-      content: row.content,
-      deletable: user?.sub === row.author_sub,
-      author: {
-        name: row.author_name,
-        picture: row.author_picture,
-      },
-      createdAt: row.created_at,
-    } as Comment;
-  });
+    const comments = data.rows.map((row) => {
+      return {
+        id: row.id,
+        slug: row.slug,
+        content: row.content,
+        deletable: user?.sub === row.author_sub,
+        author: {
+          name: row.author_name,
+          picture: row.author_picture,
+        },
+        createdAt: row.created_at,
+      } as Comment;
+    });
 
-  return comments;
+    return comments;
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
 }
