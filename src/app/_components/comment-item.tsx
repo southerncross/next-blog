@@ -6,6 +6,7 @@ import { Comment } from "@/interfaces/comment";
 import { deleteComment } from "@/lib/actions";
 import { formatDateToLocal } from "@/lib/utils";
 import Avatar from "./avatar";
+import Spinner from "./spinner";
 
 export default function CommentItem({ comment }: { comment: Comment }) {
   const { id, slug, content, author, deletable, createdAt } = comment;
@@ -17,7 +18,6 @@ export default function CommentItem({ comment }: { comment: Comment }) {
 
     setPending(true);
     await deleteComment(id, slug);
-    setPending(false);
   };
 
   return (
@@ -30,12 +30,18 @@ export default function CommentItem({ comment }: { comment: Comment }) {
       </div>
       <p className="pl-16 mt-2 text-base whitespace-pre">{content}</p>
       {deletable && (
-        <button
-          className="absolute right-0 top-3 text-rose-600 hover:text-rose-500"
-          onClick={deleteCommentById}
-        >
-          Delete
-        </button>
+        <div className="absolute right-0 top-3 w-20 text-center">
+          {pending ? (
+            <Spinner />
+          ) : (
+            <button
+              className="text-rose-600 hover:text-rose-500"
+              onClick={deleteCommentById}
+            >
+              Delete
+            </button>
+          )}
+        </div>
       )}
     </div>
   );
