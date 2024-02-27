@@ -6,6 +6,7 @@ import { join } from "path";
 import { sql } from "@vercel/postgres";
 import { getSession } from "@auth0/nextjs-auth0";
 import { notFound } from "next/navigation";
+import { unstable_noStore as noStore } from 'next/cache';
 
 const postsDirectory = join(process.cwd(), "_posts");
 
@@ -35,6 +36,8 @@ export function getAllPosts(): Post[] {
 }
 
 export async function getCommentsBySlug(slug: string) {
+  noStore();
+
   try {
     const { user } = (await getSession()) || {};
     const realSlug = slug.replace(/\.md$/, "");
