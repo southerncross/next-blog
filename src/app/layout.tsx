@@ -1,5 +1,5 @@
 import Footer from "@/app/_components/footer";
-import { SITE_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
+import { SITE_NAME, SITE_HOST, SITE_DESCRIPTION, AUTHOR_AVATAR } from "@/lib/constants";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
@@ -10,11 +10,30 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_HOST),
   title: SITE_NAME,
-  description: `Interesting...`,
+  description: SITE_DESCRIPTION,
   openGraph: {
-    images: [HOME_OG_IMAGE_URL],
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    url: SITE_HOST,
+    siteName: SITE_NAME,
+    images: [AUTHOR_AVATAR],
+    locale: 'zh_CN',
+    type: 'website',
   },
+  icons: {
+    icon: [{
+      sizes: '32x32',
+      url: '/meta/favicon-32x32.png',
+    }, {
+      sizes: '16x16',
+      url: '/meta/favicon-16x16.png',
+    }],
+    shortcut: '/meta/favicon.ico',
+    apple: '/meta/apple-touch-icon.png',
+  },
+  manifest: '/meta/site.webmanifest',
 };
 
 export default function RootLayout({
@@ -24,30 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/favicon/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
-        <link rel="shortcut icon" href="/favicon/favicon.ico" />
-        <meta name="msapplication-TileColor" content="#000000" />
-        <meta name="theme-color" content="#000" />
-        <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      </head>
+      <head />
       <UserProvider>
         <body className={inter.className}>
           <div className="min-h-screen">{children}</div>
