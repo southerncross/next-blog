@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import "./globals.css";
 
@@ -48,6 +49,7 @@ export default function RootLayout({
         <body className={inter.className}>
           <div className="min-h-screen">{children}</div>
           <Footer />
+          <SpeedInsights/>
           <Analytics />
         </body>
       </UserProvider>
