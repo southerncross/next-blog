@@ -6,7 +6,7 @@ import { join } from "path";
 import { sql } from "@vercel/postgres";
 import { getSession } from "@auth0/nextjs-auth0";
 import { notFound } from "next/navigation";
-import { unstable_noStore as noStore } from 'next/cache';
+import { unstable_noStore as noStore } from "next/cache";
 
 const postsDirectory = join(process.cwd(), "_posts");
 
@@ -60,7 +60,7 @@ export async function getCommentsBySlug(slug: string) {
       u.picture AS author_picture
     FROM comments AS c
     JOIN users AS u ON u.sub = c.author_sub
-    WHERE c.slug = ${realSlug} ORDER BY c.created_at DESC
+    WHERE c.slug = ${realSlug} ORDER BY c.created_at ASC
   `;
 
     const comments = data.rows.map((row) => {

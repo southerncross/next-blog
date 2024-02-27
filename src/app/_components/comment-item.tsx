@@ -28,7 +28,7 @@ export default function CommentItem({ comment }: { comment: Comment }) {
           {formatDateToLocal(createdAt)}
         </p>
       </div>
-      <p className="pl-16 mt-2 text-base">{content}</p>
+      <p className="pl-16 mt-2 text-base whitespace-pre">{content}</p>
       {deletable && (
         <button
           className="absolute right-0 top-3 text-rose-600 hover:text-rose-500"
