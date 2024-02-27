@@ -8,7 +8,7 @@ export default async function markdownToHtml(markdown: string) {
   const result = await remark()
     .use(remarkRehype)
     .use(rehypePrettyCode, {
-      theme: "github-light"
+      theme: "github-dark-dimmed"
     })
     .use(rehypeStringify)
     .process(markdown);
