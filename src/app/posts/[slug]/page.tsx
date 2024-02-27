@@ -23,7 +23,7 @@ export default async function Post({ params }: Params) {
     <main>
       <Container>
         <Header />
-        <article className="prose mb-32">
+        <article className="prose md:prose-lg lg:prose-xl">
           <PostHeader title={post.title} date={post.date} />
           <PostBody content={content} />
         </article>

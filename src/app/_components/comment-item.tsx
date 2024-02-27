@@ -22,7 +22,12 @@ export default function CommentItem({ comment }: { comment: Comment }) {
 
   return (
     <div className="relative my-6">
-      <Avatar name={author.name} picture={author.picture} date={createdAt} />
+      <div className="flex items-center">
+        <Avatar name={author.name} picture={author.picture} />
+        <p className="ml-3 text-sm text-gray-500">
+          {formatDateToLocal(createdAt)}
+        </p>
+      </div>
       <p className="pl-16 mt-2 text-base">{content}</p>
       {deletable && (
         <button
