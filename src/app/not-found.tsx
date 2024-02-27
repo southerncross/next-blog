@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import Link from "next/link";
+import LegacyBlogHint from "./_components/legacy-blog-hint";
 
 export default function NotFound() {
   return (
@@ -10,6 +11,7 @@ export default function NotFound() {
       >
         Go Back
       </Link>
+      <LegacyBlogHint />
     </main>
   );
 }
