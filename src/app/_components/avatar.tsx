@@ -9,7 +9,7 @@ type Props = {
 
 const Avatar = ({ name, picture, date }: Props) => {
   return (
-    <div className="flex flex-col item-center md:flex-row">
+    <div className="flex flex-col items-center md:flex-row">
       <div
         className={classNames(
           "flex md:items-center flex-row",
