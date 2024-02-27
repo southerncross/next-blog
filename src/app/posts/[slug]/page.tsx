@@ -1,10 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import {
-  getAllPosts,
-  getPostBySlug,
-  getCommentsBySlug,
-} from "../../../lib/data";
+import { Suspense } from "react";
+import { getAllPosts, getPostBySlug } from "../../../lib/data";
 import { AUTHOR_AVATAR, SITE_NAME } from "../../../lib/constants";
 import markdownToHtml from "../../../lib/markdownToHtml";
 import Container from "../../_components/container";
@@ -15,7 +12,6 @@ import Comments from "@/app/_components/comments";
 
 export default async function Post({ params }: Params) {
   const post = getPostBySlug(params.slug);
-  const comments = await getCommentsBySlug(params.slug);
 
   if (!post) {
     return notFound();
@@ -31,7 +27,9 @@ export default async function Post({ params }: Params) {
           <PostHeader title={post.title} date={post.date} />
           <PostBody content={content} />
         </article>
-        <Comments slug={post.slug} comments={comments} />
+        <Suspense>
+          <Comments slug={post.slug} />
+        </Suspense>
       </Container>
     </main>
   );

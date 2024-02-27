@@ -1,14 +1,10 @@
-import { Comment } from "@/interfaces/comment";
 import CommentForm from "./comment-form";
 import CommentItem from "./comment-item";
+import { getCommentsBySlug } from "@/lib/data";
 
-const Comments = ({
-  slug,
-  comments,
-}: {
-  slug: string;
-  comments: Comment[];
-}) => {
+export default async function Comments({ slug }: { slug: string }) {
+  const comments = await getCommentsBySlug(slug);
+
   return (
     <section className="my-8">
       <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-center md:text-left">
@@ -28,6 +24,4 @@ const Comments = ({
       <CommentForm slug={slug} />
     </section>
   );
-};
-
-export default Comments;
+}
