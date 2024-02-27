@@ -49,11 +49,27 @@ Italicized text is the *cat's meow*.
 | Header | Title |
 | Paragraph | Text |
 
-```
+```json
 {
   "firstName": "John",
   "lastName": "Smith",
   "age": 25
+}
+```
+
+```tsx
+interface CardProps {
+  title: string;
+  content: string;
+}
+
+function Card({ title, content }: CardProps) {
+  return (
+    <section className="card">
+      <div>{title}</div>
+      <div>{content}</div>
+    </section>
+  )
 }
 ```
 
