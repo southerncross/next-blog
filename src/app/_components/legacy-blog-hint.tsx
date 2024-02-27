@@ -7,7 +7,7 @@ export default function LegacyBlogHint() {
   const isLegacyBlog = /\d{4}\/\d{2}\//.test(pathname);
 
   if (!isLegacyBlog) {
-    return false;
+    return null;
   }
 
   const legacyBlogUrl = `https://southerncross.github.io/blog${pathname}`;
