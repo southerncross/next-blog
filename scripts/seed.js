@@ -1,11 +1,11 @@
 const { db } = require("@vercel/postgres");
-const { comments, users } = require("../src/lib/placeholder-data");
+const { comments, users, reactions } = require("../src/lib/placeholder-data");
 
 async function seedUsers(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
-    // Create the "comments" table if it doesn't exist
+    // Create the "users" table if it doesn't exist
     const createTable = await client.sql`
     CREATE TABLE IF NOT EXISTS users (
       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
@@ -113,11 +113,68 @@ async function seedComments(client) {
   }
 }
 
+async function seedReactions(client) {
+  try {
+    await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+
+    // Create the "reactions" table if it doesn't exist
+    const createTable = await client.sql`
+    CREATE TABLE reactions (
+      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      emoji VARCHAR(50) NOT NULL,
+      slug VARCHAR(255) NOT NULL,
+      count INTEGER DEFAULT 0,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+    `;
+
+    await client.sql`
+    CREATE OR REPLACE FUNCTION update_updated_at_column()
+    RETURNS TRIGGER AS $$
+    BEGIN
+        NEW.updated_at = NOW();
+        RETURN NEW;
+    END;
+    $$ language 'plpgsql';
+
+    CREATE TRIGGER update_reactions_updated_at
+    BEFORE UPDATE ON reactions
+    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
+    `;
+
+    await client.sql`CREATE UNIQUE INDEX idx_unique_emoji_slug ON reactions (emoji, slug);`;
+
+    console.log(`Created "reactions" table`);
+
+    // Insert data into the "reactions" table
+    const insertedReactions = await Promise.all(
+      reactions.map(
+        (reaction) => client.sql`
+        INSERT INTO reactions (id, slug, emoji, count)
+        VALUES (${reaction.id}, ${reaction.slug}, ${reaction.emoji}, ${reaction.count})
+        ON CONFLICT (id) DO NOTHING;
+      `)
+    );
+
+    console.log(`Seeded ${insertedReactions.length} reactions`);
+
+    return {
+      createTable,
+      reactions: insertedReactions,
+    };
+  } catch (error) {
+    console.error("Error seeding reactions:", error);
+    throw error;
+  }
+}
+
 async function main() {
   const client = await db.connect();
 
   await seedUsers(client);
   await seedComments(client);
+  await seedReactions(client);
 
   await client.end();
 }
