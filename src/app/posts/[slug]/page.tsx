@@ -9,6 +9,7 @@ import Header from "../../_components/header";
 import { PostBody } from "../../_components/post-body";
 import { PostHeader } from "../../_components/post-header";
 import Comments from "@/app/_components/comments";
+import EmojiReactions from "@/app/_components/emoji-reactions";
 
 export default async function Post({ params }: Params) {
   const post = getPostBySlug(params.slug);
@@ -27,6 +28,7 @@ export default async function Post({ params }: Params) {
           <PostHeader title={post.title} date={post.date} />
           <PostBody content={content} />
         </article>
+        <EmojiReactions slug={post.slug}/>
         <Suspense>
           <Comments slug={post.slug} />
         </Suspense>
