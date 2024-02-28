@@ -7,6 +7,7 @@ import { deleteComment } from "@/lib/actions";
 import { formatDateToLocal } from "@/lib/utils";
 import Avatar from "./avatar";
 import Spinner from "./spinner";
+import DateFormatter from "./date-formatter";
 
 export default function CommentItem({ comment }: { comment: Comment }) {
   const { id, slug, content, author, deletable, createdAt } = comment;
@@ -24,9 +25,10 @@ export default function CommentItem({ comment }: { comment: Comment }) {
     <div className="relative my-6">
       <div className="flex items-center">
         <Avatar name={author.name} picture={author.picture} />
-        <p className="ml-3 text-sm text-gray-500">
+        <DateFormatter date={createdAt} className="ml-3 text-sm text-gray-500"/>
+        {/* <p className="ml-3 text-sm text-gray-500">
           {formatDateToLocal(createdAt)}
-        </p>
+        </p> */}
       </div>
       <p className="pl-16 mt-2 text-base whitespace-pre">{content}</p>
       {deletable && (

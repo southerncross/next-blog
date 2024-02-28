@@ -7,5 +7,5 @@ export interface Comment {
     name: string;
     picture: string;
   };
-  createdAt: string;
+  createdAt: Date;
 }

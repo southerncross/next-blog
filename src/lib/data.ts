@@ -45,7 +45,7 @@ export async function getCommentsBySlug(slug: string) {
       id: string;
       slug: string;
       content: string;
-      created_at: string;
+      created_at: Date;
       author_sub: string;
       author_name: string;
       author_picture: string;
