@@ -26,6 +26,9 @@ dependencies:
   dotenv:
     specifier: ^16.4.5
     version: 16.4.5
+  google:
+    specifier: link:@next/third-parties/google
+    version: link:@next/third-parties/google
   gray-matter:
     specifier: ^4.0.3
     version: 4.0.3
