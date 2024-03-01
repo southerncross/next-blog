@@ -4,9 +4,7 @@ import fs from "fs";
 import matter from "gray-matter";
 import { join } from "path";
 import { sql } from "@vercel/postgres";
-import { getSession } from "@auth0/nextjs-auth0";
 import { notFound } from "next/navigation";
-import { unstable_noStore as noStore } from "next/cache";
 
 const postsDirectory = join(process.cwd(), "_posts");
 
@@ -36,10 +34,7 @@ export function getAllPosts(): Post[] {
 }
 
 export async function getCommentsBySlug(slug: string) {
-  noStore();
-
   try {
-    const { user } = (await getSession()) || {};
     const realSlug = slug.replace(/\.md$/, "");
     const data = await sql<{
       id: string;
@@ -68,8 +63,8 @@ export async function getCommentsBySlug(slug: string) {
         id: row.id,
         slug: row.slug,
         content: row.content,
-        deletable: user?.sub === row.author_sub,
         author: {
+          sub: row.author_sub,
           name: row.author_name,
           picture: row.author_picture,
         },

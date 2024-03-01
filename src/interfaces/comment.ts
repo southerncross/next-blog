@@ -2,8 +2,8 @@ export interface Comment {
   id: string;
   slug: string;
   content: string;
-  deletable?: boolean;
   author: {
+    sub: string;
     name: string;
     picture: string;
   };
