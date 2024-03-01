@@ -9,9 +9,9 @@ import {
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
-import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleTagManager } from "@next/third-parties/google";
+import Providers from "./providers";
 
 import "./globals.css";
 
@@ -54,16 +54,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head />
-      <UserProvider>
-        <body className={inter.className}>
+      <body className={inter.className}>
+        <Providers>
           <div className="min-h-screen">{children}</div>
           <Footer />
-          <SpeedInsights />
-          <Analytics />
-        </body>
+        </Providers>
+        <SpeedInsights />
+        <Analytics />
         <GoogleTagManager gtmId={GTM_ID} />
-      </UserProvider>
+      </body>
     </html>
   );
 }
