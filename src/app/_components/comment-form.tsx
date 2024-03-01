@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import classNames from "classnames";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { Textarea } from "@nextui-org/input";
 
 import { createComment } from "@/lib/actions";
 import Avatar from "./avatar";
@@ -41,11 +42,12 @@ export default function CommentForm({ slug }: { slug: string }) {
     <div>
       <div>
         <Avatar name={user.name || ""} picture={user.picture || ""} />
-        <textarea
-          className="h-28 w-full md:w-[calc(100%-64px)] px-3 py-2 md:ml-16 mt-4 md:mt-2 outline outline-1 outline-gray-200 rounded-md focus:outline-none focus:ring focus:ring-gray-200"
+        <Textarea
+          className="w-full md:w-[calc(100%-64px)] md:ml-16 my-4"
+          variant="bordered"
           value={content}
           placeholder="Add your comment..."
-          onChange={(e) => setContent(e.target.value)}
+          onValueChange={setContent}
         />
       </div>
       <div className="flex flex-row-reverse mt-2">
