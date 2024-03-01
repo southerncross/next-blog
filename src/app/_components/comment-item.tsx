@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 import { Comment } from "@/interfaces/comment";
 import { deleteComment } from "@/lib/actions";
@@ -9,7 +10,9 @@ import Spinner from "./spinner";
 import DateFormatter from "./date-formatter";
 
 export default function CommentItem({ comment }: { comment: Comment }) {
-  const { id, slug, content, author, deletable, createdAt } = comment;
+  const { id, slug, content, author, createdAt } = comment;
+  const { user } = useUser();
+  const deletable = user?.sub === author.sub;
   const [pending, setPending] = useState(false);
   const deleteCommentById = async () => {
     if (pending) {
