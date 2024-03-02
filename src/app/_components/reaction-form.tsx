@@ -3,6 +3,9 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { EmojiClickData } from "emoji-picker-react";
+import { Button } from "@nextui-org/button";
+import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/popover";
+
 import { addReaction } from "@/lib/actions";
 
 const EmojiPicker = dynamic(() => import("emoji-picker-react"), { ssr: false });
@@ -15,20 +18,17 @@ export default function ReactionForm({ slug }: { slug: string }) {
   };
 
   return (
-    <div>
-      <button
-        className="w-10 h-10 mt-2 text-xl text-gray-500 border border-solid border-gray-200 rounded-lg"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        +
-      </button>
-      <div className="flex justify-center">
+    <Popover>
+      <PopoverTrigger>
+        <Button>+</Button>
+      </PopoverTrigger>
+      <PopoverContent>
         <EmojiPicker
-          open={isOpen}
+          open={true}
           skinTonesDisabled={true}
           onEmojiClick={onEmojiClick}
         />
-      </div>
-    </div>
+      </PopoverContent>
+    </Popover>
   );
 }
