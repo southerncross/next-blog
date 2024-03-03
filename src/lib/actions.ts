@@ -73,7 +73,7 @@ export async function getReactionsBySlug(slug: string) {
     }>`
     SELECT emoji, count, slug
     FROM reactions
-    WHERE slug = ${realSlug} ORDER BY count, updated_at DESC
+    WHERE slug = ${realSlug} ORDER BY created_at DESC
   `;
 
     const reactions = data.rows.map((row) => {
@@ -87,9 +87,9 @@ export async function getReactionsBySlug(slug: string) {
     const defaultEmojis = ['👍', '❤️', '🤔', '🤡'];
     const savedEmojiSet = new Set(reactions.map((x) => x.emoji));
 
-    defaultEmojis.filter((x) => !savedEmojiSet.has(x))
+    defaultEmojis.reverse().filter((x) => !savedEmojiSet.has(x))
     .forEach((emoji) => {
-      reactions.push({
+      reactions.unshift({
         emoji,
         count: 0,
         slug: realSlug,
