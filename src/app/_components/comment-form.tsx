@@ -10,6 +10,7 @@ import Avatar from "./avatar";
 import LogoutButton from "./logout-button";
 import LoginButton from "./login-button";
 import Spinner from "./spinner";
+import { Button } from "@nextui-org/react";
 
 export default function CommentForm({ slug }: { slug: string }) {
   const { user, error, isLoading } = useUser();
@@ -51,14 +52,13 @@ export default function CommentForm({ slug }: { slug: string }) {
         />
       </div>
       <div className="flex flex-row-reverse mt-2">
-        <button
-          className="flex items-center px-3 py-2 ml-2 rounded-md bg-gray-800 hover:bg-gray-700 active:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 text-white"
-          type="submit"
+        <Button
+          className="ml-2"
           onClick={createCommentWithSlug}
         >
           {pending && <Spinner color="white" />}
           <span className={classNames({ "ml-2": pending })}>Submit</span>
-        </button>
+        </Button>
         <LogoutButton />
       </div>
     </div>

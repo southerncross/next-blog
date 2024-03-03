@@ -30,7 +30,11 @@ export default function ReactionItem({
       {isPending ? (
         <Spinner />
       ) : (
-        <span className={classNames("text-xs", { hidden: count <= 0 })}>
+        <span
+          className={classNames("text-xs text-gray-500", {
+            hidden: count <= 0,
+          })}
+        >
           {count < 1000 ? count : "999+"}
         </span>
       )}

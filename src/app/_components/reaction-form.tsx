@@ -1,20 +1,20 @@
 "use client";
 
-import { useState } from "react";
 import dynamic from "next/dynamic";
-import { EmojiClickData } from "emoji-picker-react";
+import { EmojiClickData, Theme } from "emoji-picker-react";
 import { Button } from "@nextui-org/button";
 import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/popover";
+import { useTheme } from "next-themes";
 
 import { addReaction } from "@/lib/actions";
+import { THEME } from "@/lib/constants";
 
 const EmojiPicker = dynamic(() => import("emoji-picker-react"), { ssr: false });
 
 export default function ReactionForm({ slug }: { slug: string }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const { theme } = useTheme();
   const onEmojiClick = async (reaction: EmojiClickData) => {
     await addReaction(reaction.emoji, slug);
-    setIsOpen(false);
   };
 
   return (
@@ -34,6 +34,7 @@ export default function ReactionForm({ slug }: { slug: string }) {
           open={true}
           skinTonesDisabled={true}
           autoFocusSearch={false}
+          theme={theme === THEME.DARK ? Theme.DARK : Theme.LIGHT}
           onEmojiClick={onEmojiClick}
         />
       </PopoverContent>

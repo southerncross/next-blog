@@ -6,3 +6,7 @@ export const AUTHOR_AVATAR = "/assets/images/avatar.jpg";
 export const HOME_OG_IMAGE_URL = "";
 export const GITHUB_URL = "https://github.com/southerncross";
 export const GTM_ID = "GTM-NFQVZLVV";
+export const THEME = {
+  LIGHT: "light",
+  DARK: "dark",
+} as const;
