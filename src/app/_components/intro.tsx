@@ -1,19 +1,18 @@
-import Image from "next/image";
-import Link from 'next/link';
+"use client";
 
-import githubIcon from '@public/assets/images/github.svg';
-import { SITE_NAME, GITHUB_URL } from "@/lib/constants";
+import { SITE_NAME } from "@/lib/constants";
+import ThemeSwitcher from "./theme-switcher";
+import GithubIcon from "./github-icon";
 
 export function Intro() {
   return (
-    <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-20 md:mb-24">
+    <section className="flex-row flex items-center justify-between mt-16 mb-20 md:mb-24">
       <h1 className="text-4xl md:text-6xl font-bold tracking-tighter leading-tight md:pr-8">
         {SITE_NAME}
       </h1>
-      <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">
-        <Link href={GITHUB_URL} target="_blank">
-          <Image src={githubIcon} width={24} height={24} alt="github icon" />
-        </Link>
+      <h4 className="flex flex-row items-center ml-2 text-center md:text-left text-lg md:pl-8">
+        <GithubIcon />
+        <ThemeSwitcher className="ml-3" />
       </h4>
     </section>
   );
