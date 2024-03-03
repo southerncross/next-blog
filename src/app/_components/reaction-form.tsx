@@ -18,14 +18,22 @@ export default function ReactionForm({ slug }: { slug: string }) {
   };
 
   return (
-    <Popover>
+    <Popover classNames={{ content: "px-0 py-0" }}>
       <PopoverTrigger>
-        <Button>+</Button>
+        <Button
+          isIconOnly
+          variant="light"
+          radius="md"
+          aria-label="Add reaction"
+        >
+          +
+        </Button>
       </PopoverTrigger>
       <PopoverContent>
         <EmojiPicker
           open={true}
           skinTonesDisabled={true}
+          autoFocusSearch={false}
           onEmojiClick={onEmojiClick}
         />
       </PopoverContent>
