@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { SITE_NAME } from "@/lib/constants";
-import ThemeSwitcher from "./theme-switcher";
-import GithubIcon from "./github-icon";
+import { SITE_NAME } from '@/lib/constants';
+import ThemeSwitcher from './theme-switcher';
+import GithubIcon from './github-icon';
 
 export function Intro() {
   return (
-    <section className="flex-row flex items-center justify-between mt-16 mb-20 md:mb-24">
-      <h1 className="text-4xl md:text-6xl font-bold tracking-tighter leading-tight md:pr-8">
+    <section className="mb-20 mt-16 flex flex-row items-center justify-between md:mb-24">
+      <h1 className="text-4xl font-bold leading-tight tracking-tighter md:pr-8 md:text-6xl">
         {SITE_NAME}
       </h1>
-      <h4 className="flex flex-row items-center ml-2 text-center md:text-left text-lg md:pl-8">
+      <h4 className="ml-2 flex flex-row items-center text-center text-lg md:pl-8 md:text-left">
         <GithubIcon />
         <ThemeSwitcher className="ml-3" />
       </h4>

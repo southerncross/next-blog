@@ -1,24 +1,24 @@
-import { Post } from "@/interfaces/post";
-import { Comment } from "@/interfaces/comment";
-import fs from "fs";
-import matter from "gray-matter";
-import { join } from "path";
-import { sql } from "@vercel/postgres";
-import { notFound } from "next/navigation";
+import { Post } from '@/interfaces/post';
+import { Comment } from '@/interfaces/comment';
+import fs from 'fs';
+import matter from 'gray-matter';
+import { join } from 'path';
+import { sql } from '@vercel/postgres';
+import { notFound } from 'next/navigation';
 
-const postsDirectory = join(process.cwd(), "_posts");
+const postsDirectory = join(process.cwd(), '_posts');
 
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
 export function getPostBySlug(slug: string) {
-  const realSlug = slug.replace(/\.md$/, "");
+  const realSlug = slug.replace(/\.md$/, '');
   const fullPath = join(postsDirectory, `${realSlug}.md`);
   if (!fs.existsSync(fullPath)) {
     notFound();
   }
-  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
   return { ...data, slug: realSlug, content } as Post;
@@ -35,7 +35,7 @@ export function getAllPosts(): Post[] {
 
 export async function getCommentsBySlug(slug: string) {
   try {
-    const realSlug = slug.replace(/\.md$/, "");
+    const realSlug = slug.replace(/\.md$/, '');
     const data = await sql<{
       id: string;
       slug: string;

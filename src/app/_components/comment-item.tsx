@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { useState } from 'react';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
-import { Comment } from "@/interfaces/comment";
-import { deleteComment } from "@/lib/actions";
-import Avatar from "./avatar";
-import Spinner from "./spinner";
-import DateFormatter from "./date-formatter";
+import { Comment } from '@/interfaces/comment';
+import { deleteComment } from '@/lib/actions';
+import Avatar from './avatar';
+import Spinner from './spinner';
+import DateFormatter from './date-formatter';
 
 export default function CommentItem({ comment }: { comment: Comment }) {
   const { id, slug, content, author, createdAt } = comment;
@@ -27,9 +27,12 @@ export default function CommentItem({ comment }: { comment: Comment }) {
     <div className="relative my-6">
       <div className="flex items-center">
         <Avatar name={author.name} picture={author.picture} />
-        <DateFormatter date={createdAt} className="ml-3 text-sm text-gray-500"/>
+        <DateFormatter
+          date={createdAt}
+          className="ml-3 text-sm text-gray-500"
+        />
       </div>
-      <p className="pl-16 mt-2 text-base whitespace-pre">{content}</p>
+      <p className="mt-2 whitespace-pre pl-16 text-base">{content}</p>
       {deletable && (
         <div className="absolute right-0 top-3 w-20 text-center">
           {pending ? (

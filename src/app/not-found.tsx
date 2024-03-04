@@ -1,5 +1,5 @@
-import Link from "next/link";
-import LegacyBlogHint from "./_components/legacy-blog-hint";
+import Link from 'next/link';
+import LegacyBlogHint from './_components/legacy-blog-hint';
 
 export default function NotFound() {
   return (

@@ -1,5 +1,5 @@
-import Link from "next/link";
-import DateFormatter from "./date-formatter";
+import Link from 'next/link';
+import DateFormatter from './date-formatter';
 
 type Props = {
   title: string;
@@ -7,14 +7,10 @@ type Props = {
   slug: string;
 };
 
-export function PostPreview({
-  title,
-  date,
-  slug,
-}: Props) {
+export function PostPreview({ title, date, slug }: Props) {
   return (
     <div>
-      <h3 className="text-3xl mb-2 leading-snug">
+      <h3 className="mb-2 text-3xl leading-snug">
         <Link
           as={`/posts/${slug}`}
           href="/posts/[slug]"
@@ -23,7 +19,7 @@ export function PostPreview({
           {title}
         </Link>
       </h3>
-      <div className="text-lg mb-2 text-gray-500">
+      <div className="mb-2 text-lg text-gray-500">
         <DateFormatter date={date} />
       </div>
     </div>

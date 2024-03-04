@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import dynamic from "next/dynamic";
-import { EmojiClickData, Theme } from "emoji-picker-react";
-import { Button } from "@nextui-org/button";
-import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/popover";
-import { useTheme } from "next-themes";
+import dynamic from 'next/dynamic';
+import { EmojiClickData, Theme } from 'emoji-picker-react';
+import { Button } from '@nextui-org/button';
+import { Popover, PopoverTrigger, PopoverContent } from '@nextui-org/popover';
+import { useTheme } from 'next-themes';
 
-import { addReaction } from "@/lib/actions";
-import { THEME } from "@/lib/constants";
+import { addReaction } from '@/lib/actions';
+import { THEME } from '@/lib/constants';
 
-const EmojiPicker = dynamic(() => import("emoji-picker-react"), { ssr: false });
+const EmojiPicker = dynamic(() => import('emoji-picker-react'), { ssr: false });
 
 export default function ReactionForm({ slug }: { slug: string }) {
   const { theme } = useTheme();
@@ -18,7 +18,7 @@ export default function ReactionForm({ slug }: { slug: string }) {
   };
 
   return (
-    <Popover classNames={{ content: "px-0 py-0" }}>
+    <Popover classNames={{ content: 'px-0 py-0' }}>
       <PopoverTrigger>
         <Button
           isIconOnly

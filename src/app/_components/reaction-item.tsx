@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import classNames from "classnames";
-import { Button } from "@nextui-org/button";
+import { useState } from 'react';
+import classNames from 'classnames';
+import { Button } from '@nextui-org/button';
 
-import { Reaction } from "@/interfaces/reaction";
-import { addReaction } from "@/lib/actions";
-import Spinner from "./spinner";
+import { Reaction } from '@/interfaces/reaction';
+import { addReaction } from '@/lib/actions';
+import Spinner from './spinner';
 
 export default function ReactionItem({
   reaction: { emoji, count, slug },
@@ -31,11 +31,11 @@ export default function ReactionItem({
         <Spinner />
       ) : (
         <span
-          className={classNames("text-xs text-gray-500", {
+          className={classNames('text-xs text-gray-500', {
             hidden: count <= 0,
           })}
         >
-          {count < 1000 ? count : "999+"}
+          {count < 1000 ? count : '999+'}
         </span>
       )}
     </Button>
