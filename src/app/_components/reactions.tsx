@@ -1,6 +1,6 @@
-import ReactionForm from "./reaction-form";
-import { getReactionsBySlug } from "@/lib/actions";
-import ReactionItem from "./reaction-item";
+import ReactionForm from './reaction-form';
+import { getReactionsBySlug } from '@/lib/actions';
+import ReactionItem from './reaction-item';
 
 export default async function Reactions({ slug }: { slug: string }) {
   const reactions = await getReactionsBySlug(slug);

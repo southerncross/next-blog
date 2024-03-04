@@ -7,15 +7,15 @@ type Props = {
 const Avatar = ({ name, picture }: Props) => {
   return (
     <div className="flex flex-col items-center md:flex-row">
-      <div className="flex items-center flex-row">
+      <div className="flex flex-row items-center">
         <img
           src={picture}
-          className="w-12 h-12 rounded-full mr-4"
+          className="mr-4 h-12 w-12 rounded-full"
           alt={name}
           width={48}
           height={48}
         />
-        <span className="text-lg md:text-xl font-bold text-ellipsis overflow-hidden">
+        <span className="overflow-hidden text-ellipsis text-lg font-bold md:text-xl">
           {name}
         </span>
       </div>

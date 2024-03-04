@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { useTheme } from "next-themes";
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useTheme } from 'next-themes';
 
-import { GITHUB_URL, THEME } from "@/lib/constants";
+import { GITHUB_URL, THEME } from '@/lib/constants';
 
-import githubIcon from "@public/assets/images/github.svg";
-import githubIconWhite from "@public/assets/images/github-white.svg";
+import githubIcon from '@public/assets/images/github.svg';
+import githubIconWhite from '@public/assets/images/github-white.svg';
 
 export default function GithubIcon({ className }: { className?: string }) {
   const [mounted, setMounted] = useState(false);

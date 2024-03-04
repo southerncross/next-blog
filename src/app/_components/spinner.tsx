@@ -1,14 +1,14 @@
-import classNames from "classnames";
+import classNames from 'classnames';
 
 export default function Spinner({
-  color = "gray",
+  color = 'gray',
 }: {
-  color?: "white" | "gray";
+  color?: 'white' | 'gray';
 }) {
-  const textColor = color === "white" ? "text-white" : "text-gray-600";
+  const textColor = color === 'white' ? 'text-white' : 'text-gray-600';
   return (
     <svg
-      className={classNames("inline animate-spin h-5 w-5", textColor)}
+      className={classNames('inline h-5 w-5 animate-spin', textColor)}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

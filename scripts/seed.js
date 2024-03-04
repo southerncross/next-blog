@@ -1,5 +1,5 @@
-const { db } = require("@vercel/postgres");
-const { comments, users, reactions } = require("../src/lib/placeholder-data");
+const { db } = require('@vercel/postgres');
+const { comments, users, reactions } = require('../src/lib/placeholder-data');
 
 async function seedUsers(client) {
   try {
@@ -42,7 +42,8 @@ async function seedUsers(client) {
         INSERT INTO users (id, sub, name, picture)
         VALUES (${user.id}, ${user.sub}, ${user.name}, ${user.picture})
         ON CONFLICT (id) DO NOTHING;
-      `)
+      `,
+      ),
     );
 
     console.log(`Seeded ${insertedUsers.length} users`);
@@ -52,7 +53,7 @@ async function seedUsers(client) {
       users: insertedUsers,
     };
   } catch (error) {
-    console.error("Error seeding users:", error);
+    console.error('Error seeding users:', error);
     throw error;
   }
 }
@@ -98,7 +99,8 @@ async function seedComments(client) {
         INSERT INTO comments (id, slug, content, author_sub)
         VALUES (${comment.id}, ${comment.slug}, ${comment.content}, ${comment.author_sub})
         ON CONFLICT (id) DO NOTHING;
-      `)
+      `,
+      ),
     );
 
     console.log(`Seeded ${insertedComments.length} comments`);
@@ -108,7 +110,7 @@ async function seedComments(client) {
       comments: insertedComments,
     };
   } catch (error) {
-    console.error("Error seeding comments:", error);
+    console.error('Error seeding comments:', error);
     throw error;
   }
 }
@@ -154,7 +156,8 @@ async function seedReactions(client) {
         INSERT INTO reactions (id, slug, emoji, count)
         VALUES (${reaction.id}, ${reaction.slug}, ${reaction.emoji}, ${reaction.count})
         ON CONFLICT (id) DO NOTHING;
-      `)
+      `,
+      ),
     );
 
     console.log(`Seeded ${insertedReactions.length} reactions`);
@@ -164,7 +167,7 @@ async function seedReactions(client) {
       reactions: insertedReactions,
     };
   } catch (error) {
-    console.error("Error seeding reactions:", error);
+    console.error('Error seeding reactions:', error);
     throw error;
   }
 }
@@ -181,7 +184,7 @@ async function main() {
 
 main().catch((err) => {
   console.error(
-    "An error occurred while attempting to seed the database:",
-    err
+    'An error occurred while attempting to seed the database:',
+    err,
   );
 });

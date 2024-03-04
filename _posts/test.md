@@ -1,6 +1,6 @@
 ---
-title: "test"
-date: "2024-02-21T16:00:00+08:00"
+title: 'test'
+date: '2024-02-21T16:00:00+08:00'
 preview: true
 ---
 
@@ -22,7 +22,7 @@ this is a test file
 
 I just love **bold text**.
 
-Italicized text is the *cat's meow*.
+Italicized text is the _cat's meow_.
 
 > blockquote
 
@@ -44,10 +44,10 @@ Italicized text is the *cat's meow*.
 
 # Extended Syntax
 
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
+| Syntax    | Description |
+| --------- | ----------- |
+| Header    | Title       |
+| Paragraph | Text        |
 
 ```
 very looooooooooooooooooooooooooooooooooooooooooooog text
@@ -73,7 +73,7 @@ function Card({ title, content }: CardProps) {
       <div>{title}</div>
       <div>{content}</div>
     </section>
-  )
+  );
 }
 ```
 

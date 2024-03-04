@@ -1,16 +1,16 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { SITE_NAME } from "@/lib/constants";
-import ThemeSwitcher from "./theme-switcher";
-import GithubIcon from "./github-icon";
+import { SITE_NAME } from '@/lib/constants';
+import ThemeSwitcher from './theme-switcher';
+import GithubIcon from './github-icon';
 
 const Header = () => {
   return (
-    <h2 className="flex flex-row justify-between items-center text-2xl md:text-3xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8 text-gray-400">
+    <h2 className="mb-20 mt-8 flex flex-row items-center justify-between text-2xl font-bold leading-tight tracking-tight text-gray-400 md:text-3xl md:tracking-tighter">
       <Link href="/" className="hover:underline">
         {SITE_NAME}
       </Link>
-      <span className="flex flex-row items-center ml-2">
+      <span className="ml-2 flex flex-row items-center">
         <GithubIcon />
         <ThemeSwitcher className="ml-3" />
       </span>

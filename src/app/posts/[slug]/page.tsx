@@ -1,15 +1,15 @@
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { Suspense } from "react";
-import { getAllPosts, getPostBySlug } from "../../../lib/data";
-import { AUTHOR_AVATAR, SITE_NAME } from "../../../lib/constants";
-import markdownToHtml from "../../../lib/markdownToHtml";
-import Container from "../../_components/container";
-import Header from "../../_components/header";
-import { PostBody } from "../../_components/post-body";
-import { PostHeader } from "../../_components/post-header";
-import Comments from "@/app/_components/comments";
-import Reactions from "@/app/_components/reactions";
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
+import { getAllPosts, getPostBySlug } from '../../../lib/data';
+import { AUTHOR_AVATAR, SITE_NAME } from '../../../lib/constants';
+import markdownToHtml from '../../../lib/markdownToHtml';
+import Container from '../../_components/container';
+import Header from '../../_components/header';
+import { PostBody } from '../../_components/post-body';
+import { PostHeader } from '../../_components/post-header';
+import Comments from '@/app/_components/comments';
+import Reactions from '@/app/_components/reactions';
 
 export default async function Post({ params }: Params) {
   const post = getPostBySlug(params.slug);
@@ -18,7 +18,7 @@ export default async function Post({ params }: Params) {
     return notFound();
   }
 
-  const content = await markdownToHtml(post.content || "");
+  const content = await markdownToHtml(post.content || '');
 
   return (
     <main>

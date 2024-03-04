@@ -1,25 +1,22 @@
-"use server";
+'use server';
 
-import { z } from "zod";
-import { sql } from "@vercel/postgres";
-import { revalidatePath } from "next/cache";
+import { z } from 'zod';
+import { sql } from '@vercel/postgres';
+import { revalidatePath } from 'next/cache';
 import { getSession } from '@auth0/nextjs-auth0';
 
-import { Reaction } from "@/interfaces/reaction";
+import { Reaction } from '@/interfaces/reaction';
 
 const CreateComment = z.object({
   slug: z.string(),
   content: z.string().max(4096),
 });
-export async function createComment(
-  slug: string,
-  content: string,
-) {
+export async function createComment(slug: string, content: string) {
   CreateComment.parse({ slug, content });
 
-  const { user } = await getSession() || {};
+  const { user } = (await getSession()) || {};
   if (!user) {
-    throw new Error("Unauthorized");
+    throw new Error('Unauthorized');
   }
 
   await sql`
@@ -45,9 +42,9 @@ const DeleteComment = z.object({
 export async function deleteComment(id: string, slug: string) {
   DeleteComment.parse({ id, slug });
 
-  const { user } = await getSession() || {};
+  const { user } = (await getSession()) || {};
   if (!user) {
-    throw new Error("Unauthorized");
+    throw new Error('Unauthorized');
   }
 
   await sql`
@@ -65,7 +62,7 @@ export async function getReactionsBySlug(slug: string) {
   GetReactionsBySlug.parse({ slug });
 
   try {
-    const realSlug = slug.replace(/\.md$/, "");
+    const realSlug = slug.replace(/\.md$/, '');
     const data = await sql<{
       emoji: string;
       count: number;
@@ -87,14 +84,16 @@ export async function getReactionsBySlug(slug: string) {
     const defaultEmojis = ['👍', '❤️', '🤔', '🤡'];
     const savedEmojiSet = new Set(reactions.map((x) => x.emoji));
 
-    defaultEmojis.reverse().filter((x) => !savedEmojiSet.has(x))
-    .forEach((emoji) => {
-      reactions.unshift({
-        emoji,
-        count: 0,
-        slug: realSlug,
+    defaultEmojis
+      .reverse()
+      .filter((x) => !savedEmojiSet.has(x))
+      .forEach((emoji) => {
+        reactions.unshift({
+          emoji,
+          count: 0,
+          slug: realSlug,
+        });
       });
-    });
 
     return reactions;
   } catch (e) {
