@@ -3,7 +3,7 @@
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import darkModeIcon from '@public/assets/images/dark-mode.svg';
 import lightModeIcon from '@public/assets/images/light-mode.svg';
@@ -20,7 +20,7 @@ export default function ThemeSwitcher({ className }: { className?: string }) {
   if (!mounted) return null;
 
   return (
-    <div className={classNames('cursor-pointer p-2', className)}>
+    <div className={clsx('cursor-pointer p-2', className)}>
       <Image
         src={theme === THEME.DARK ? darkModeIcon : lightModeIcon}
         width={30}

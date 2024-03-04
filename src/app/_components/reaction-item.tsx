@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { Button } from '@nextui-org/button';
 
 import { Reaction } from '@/interfaces/reaction';
@@ -31,7 +31,7 @@ export default function ReactionItem({
         <Spinner />
       ) : (
         <span
-          className={classNames('text-xs text-gray-500', {
+          className={clsx('text-xs text-gray-500', {
             hidden: count <= 0,
           })}
         >
