@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import classNames from 'classnames';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { Textarea } from '@nextui-org/input';
+import clsx from 'clsx';
 
 import { createComment } from '@/lib/actions';
 import Avatar from './avatar';
@@ -54,7 +54,7 @@ export default function CommentForm({ slug }: { slug: string }) {
       <div className="mt-2 flex flex-row-reverse">
         <Button className="ml-2" onClick={createCommentWithSlug}>
           {pending && <Spinner color="white" />}
-          <span className={classNames({ 'ml-2': pending })}>Submit</span>
+          <span className={clsx({ 'ml-2': pending })}>Submit</span>
         </Button>
         <LogoutButton />
       </div>
