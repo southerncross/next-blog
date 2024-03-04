@@ -12,7 +12,7 @@ import { THEME } from '@/lib/constants';
 const EmojiPicker = dynamic(() => import('emoji-picker-react'), { ssr: false });
 
 export default function ReactionForm({ slug }: { slug: string }) {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const onEmojiClick = async (reaction: EmojiClickData) => {
     await addReaction(reaction.emoji, slug);
   };
@@ -34,7 +34,7 @@ export default function ReactionForm({ slug }: { slug: string }) {
           open={true}
           skinTonesDisabled={true}
           autoFocusSearch={false}
-          theme={theme === THEME.DARK ? Theme.DARK : Theme.LIGHT}
+          theme={resolvedTheme === THEME.DARK ? Theme.DARK : Theme.LIGHT}
           onEmojiClick={onEmojiClick}
         />
       </PopoverContent>

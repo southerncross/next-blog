@@ -12,7 +12,7 @@ import githubIconWhite from '@public/assets/images/github-white.svg';
 
 export default function GithubIcon({ className }: { className?: string }) {
   const [mounted, setMounted] = useState(false);
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -20,10 +20,12 @@ export default function GithubIcon({ className }: { className?: string }) {
 
   if (!mounted) return null;
 
+  console.log('boring >>>', resolvedTheme);
+
   return (
     <Link className={className} href={GITHUB_URL} target="_blank">
       <Image
-        src={theme === THEME.DARK ? githubIconWhite : githubIcon}
+        src={resolvedTheme === THEME.DARK ? githubIconWhite : githubIcon}
         width={24}
         height={24}
         alt="github icon"

@@ -11,7 +11,7 @@ import { THEME } from '@/lib/constants';
 
 export default function ThemeSwitcher({ className }: { className?: string }) {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -22,12 +22,12 @@ export default function ThemeSwitcher({ className }: { className?: string }) {
   return (
     <div className={clsx('cursor-pointer p-2', className)}>
       <Image
-        src={theme === THEME.DARK ? darkModeIcon : lightModeIcon}
+        src={resolvedTheme === THEME.DARK ? darkModeIcon : lightModeIcon}
         width={30}
         height={30}
-        alt={theme === THEME.DARK ? 'dark mode' : 'light mode'}
+        alt={resolvedTheme === THEME.DARK ? 'dark mode' : 'light mode'}
         onClick={() =>
-          setTheme(theme === THEME.DARK ? THEME.LIGHT : THEME.DARK)
+          setTheme(resolvedTheme === THEME.DARK ? THEME.LIGHT : THEME.DARK)
         }
       />
     </div>
