@@ -20,8 +20,6 @@ export default function GithubIcon({ className }: { className?: string }) {
 
   if (!mounted) return null;
 
-  console.log('boring >>>', resolvedTheme);
-
   return (
     <Link className={className} href={GITHUB_URL} target="_blank">
       <Image
