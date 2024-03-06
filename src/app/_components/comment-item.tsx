@@ -24,7 +24,7 @@ export default function CommentItem({ comment }: { comment: Comment }) {
   };
 
   return (
-    <div className="relative my-6">
+    <article className="relative my-6">
       <div className="flex items-center">
         <Avatar name={author.name} picture={author.picture} />
         <DateFormatter
@@ -47,6 +47,6 @@ export default function CommentItem({ comment }: { comment: Comment }) {
           )}
         </div>
       )}
-    </div>
+    </article>
   );
 }

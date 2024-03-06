@@ -41,7 +41,7 @@ export default function CommentForm({ slug }: { slug: string }) {
 
   return (
     <div>
-      <div>
+      <article>
         <Avatar name={user.name || ''} picture={user.picture || ''} />
         <Textarea
           className="my-4 w-full md:ml-16 md:w-[calc(100%-64px)]"
@@ -50,7 +50,7 @@ export default function CommentForm({ slug }: { slug: string }) {
           placeholder="Add your comment..."
           onValueChange={setContent}
         />
-      </div>
+      </article>
       <div className="mt-2 flex flex-row-reverse">
         <Button className="ml-2" onClick={createCommentWithSlug}>
           {pending && <Spinner color="white" />}
