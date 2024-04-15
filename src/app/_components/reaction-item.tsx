@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 import { Button } from '@nextui-org/button';
+import confetti from 'canvas-confetti';
 
 import { Reaction } from '@/interfaces/reaction';
 import { addReaction } from '@/lib/actions';
@@ -22,6 +23,7 @@ export default function ReactionItem({
     setIsPending(true);
     await addReaction(emoji, slug);
     setIsPending(false);
+    confetti();
   };
 
   return (
