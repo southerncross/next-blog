@@ -12,8 +12,7 @@ export function PostPreview({ title, date, slug }: Props) {
     <div>
       <h3 className="mb-2 text-3xl leading-snug">
         <Link
-          as={`/posts/${slug}`}
-          href="/posts/[slug]"
+          href={`/posts/${slug}`}
           className="hover:underline"
         >
           {title}
