@@ -5,7 +5,7 @@ Operational guide for AI coding agents (Droid, Claude, Cursor, Copilot, etc.) wo
 ## TL;DR for agents
 
 - Package manager: **pnpm** (lockfile is `pnpm-lock.yaml`). Never use `npm`/`yarn`.
-- Node: 18.18+ recommended (matches Next.js 14 requirement).
+- Node: 24.x required (Vercel no longer supports Node 18.x; pinned via `engines` in `package.json` and `.nvmrc`).
 - Always run before declaring a task done:
   ```bash
   pnpm install --frozen-lockfile
