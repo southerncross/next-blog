@@ -2,22 +2,31 @@ import Link from 'next/link';
 import DateFormatter from './date-formatter';
 
 type Props = {
+  index: number;
   title: string;
   date: string;
   slug: string;
 };
 
-export function PostPreview({ title, date, slug }: Props) {
+export function PostPreview({ index, title, date, slug }: Props) {
   return (
-    <div>
-      <h3 className="mb-2 text-3xl leading-snug">
-        <Link href={`/posts/${slug}`} className="hover:underline">
+    <li className="group">
+      <Link
+        href={`/posts/${slug}`}
+        className="grid grid-cols-[auto_1fr_auto] items-baseline gap-6 py-6 transition-colors md:py-7"
+      >
+        <span className="font-mono text-xs tabular-nums text-ink-subtle dark:text-carbon-muted">
+          {String(index).padStart(2, '0')}
+        </span>
+        <h3 className="text-lg font-medium leading-snug text-ink transition-colors group-hover:text-brand dark:text-carbon-text md:text-xl">
           {title}
-        </Link>
-      </h3>
-      <div className="mb-2 text-lg text-gray-500">
-        <DateFormatter date={date} />
-      </div>
-    </div>
+        </h3>
+        <DateFormatter
+          date={date}
+          format="yyyy.MM.dd"
+          className="font-mono text-xs text-ink-muted dark:text-carbon-muted"
+        />
+      </Link>
+    </li>
   );
 }

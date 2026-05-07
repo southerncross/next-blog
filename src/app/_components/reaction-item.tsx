@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import clsx from 'clsx';
-import { Button } from '@nextui-org/button';
 import confetti from 'canvas-confetti';
 
 import { Reaction } from '@/interfaces/reaction';
@@ -27,19 +26,24 @@ export default function ReactionItem({
   };
 
   return (
-    <Button variant="light" radius="md" onClick={onReactionClick}>
-      <span className="text-2xl">{emoji}</span>
+    <button
+      type="button"
+      onClick={onReactionClick}
+      className="inline-flex h-9 items-center gap-2 rounded-button border border-outline-subtle bg-canvas-surface px-3 text-sm transition-colors hover:border-brand hover:text-brand dark:border-carbon-border dark:bg-carbon-surface"
+    >
+      <span className="text-base leading-none">{emoji}</span>
       {isPending ? (
         <Spinner />
       ) : (
         <span
-          className={clsx('text-xs text-gray-500', {
-            hidden: count <= 0,
-          })}
+          className={clsx(
+            'font-mono text-xs tabular-nums text-ink-muted dark:text-carbon-muted',
+            { hidden: count <= 0 },
+          )}
         >
           {count < 1000 ? count : '999+'}
         </span>
       )}
-    </Button>
+    </button>
   );
 }

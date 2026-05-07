@@ -24,29 +24,34 @@ export default function CommentItem({ comment }: { comment: Comment }) {
   };
 
   return (
-    <article className="relative my-6">
-      <div className="flex items-center">
-        <Avatar name={author.name} picture={author.picture} />
-        <DateFormatter
-          date={createdAt}
-          className="ml-3 text-sm text-gray-500"
-        />
-      </div>
-      <p className="mt-2 whitespace-pre pl-16 text-base">{content}</p>
-      {deletable && (
-        <div className="absolute right-0 top-3 w-20 text-center">
-          {pending ? (
-            <Spinner />
-          ) : (
-            <button
-              className="text-rose-600 hover:text-rose-500"
-              onClick={deleteCommentById}
-            >
-              Delete
-            </button>
-          )}
+    <article className="relative py-6">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <Avatar name={author.name} picture={author.picture} />
+          <span className="text-ink-subtle dark:text-carbon-muted">·</span>
+          <DateFormatter
+            date={createdAt}
+            className="font-mono text-xs text-ink-muted dark:text-carbon-muted"
+          />
         </div>
-      )}
+        {deletable && (
+          <div className="text-right">
+            {pending ? (
+              <Spinner />
+            ) : (
+              <button
+                className="font-mono text-xs uppercase tracking-wider text-ink-muted transition-colors hover:text-brand"
+                onClick={deleteCommentById}
+              >
+                Delete
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+      <p className="mt-3 whitespace-pre-wrap pl-12 text-[15px] leading-relaxed text-ink dark:text-carbon-text">
+        {content}
+      </p>
     </article>
   );
 }

@@ -6,15 +6,19 @@ import GithubIcon from './github-icon';
 
 const Header = () => {
   return (
-    <h2 className="mb-20 mt-8 flex flex-row items-center justify-between text-2xl font-bold leading-tight tracking-tight text-gray-400 md:text-3xl md:tracking-tighter">
-      <Link href="/" className="hover:underline">
-        {SITE_NAME}
+    <header className="flex items-center justify-between border-b border-outline-subtle py-6 dark:border-carbon-border">
+      <Link
+        href="/"
+        className="group flex items-center gap-3 text-sm font-medium tracking-tight text-ink transition-colors hover:text-brand dark:text-carbon-text"
+      >
+        <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand" />
+        <span>{SITE_NAME}</span>
       </Link>
-      <span className="ml-2 flex flex-row items-center">
+      <div className="flex items-center gap-1">
         <GithubIcon />
-        <ThemeSwitcher className="ml-3" />
-      </span>
-    </h2>
+        <ThemeSwitcher />
+      </div>
+    </header>
   );
 };
 

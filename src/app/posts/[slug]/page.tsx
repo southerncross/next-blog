@@ -22,18 +22,22 @@ export default async function Post({ params }: Params) {
 
   return (
     <main>
-      <Container>
+      <Container size="wide">
         <Header />
-        <article className="prose dark:prose-invert md:prose-lg lg:prose-xl">
+      </Container>
+      <Container size="narrow" className="pb-24">
+        <article className="prose prose-neutral max-w-none dark:prose-invert md:prose-lg">
           <PostHeader title={post.title} date={post.date} />
           <PostBody content={content} />
         </article>
-        <Suspense>
-          <Reactions slug={post.slug} />
-        </Suspense>
-        <Suspense>
-          <Comments slug={post.slug} />
-        </Suspense>
+        <div className="mt-16 border-t border-outline-subtle pt-10 dark:border-carbon-border">
+          <Suspense>
+            <Reactions slug={post.slug} />
+          </Suspense>
+          <Suspense>
+            <Comments slug={post.slug} />
+          </Suspense>
+        </div>
       </Container>
     </main>
   );

@@ -7,7 +7,7 @@ import {
   GTM_ID,
 } from '@/lib/constants';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleTagManager } from '@next/third-parties/google';
@@ -15,7 +15,17 @@ import Providers from './providers';
 
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const sans = Inter({
+  subsets: ['latin'],
+  variable: '--font-geist-sans',
+  display: 'swap',
+});
+
+const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_HOST),
@@ -53,11 +63,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html
+      lang="en"
+      className={`${sans.variable} ${mono.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="bg-canvas font-sans text-ink antialiased dark:bg-carbon dark:text-carbon-text">
         <Providers>
-          <div className="min-h-screen">{children}</div>
-          <Footer />
+          <div className="flex min-h-screen flex-col">
+            <div className="flex-1">{children}</div>
+            <Footer />
+          </div>
         </Providers>
         <SpeedInsights />
         <Analytics />
