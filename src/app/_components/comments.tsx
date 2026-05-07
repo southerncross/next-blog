@@ -14,7 +14,9 @@ export default async function Comments({ slug }: { slug: string }) {
             Discussion
           </h2>
         </div>
-        <span className="label-mono">{comments.length} replies</span>
+        <span className="label-mono">
+          {comments.length} {comments.length === 1 ? 'reply' : 'replies'}
+        </span>
       </div>
       {comments.length > 0 ? (
         <ul className="mb-10 divide-y divide-outline-subtle border-y border-outline-subtle dark:divide-carbon-border dark:border-carbon-border">

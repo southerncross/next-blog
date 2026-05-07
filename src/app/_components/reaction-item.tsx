@@ -29,7 +29,9 @@ export default function ReactionItem({
     <button
       type="button"
       onClick={onReactionClick}
-      className="inline-flex h-9 items-center gap-2 rounded-button border border-outline-subtle bg-canvas-surface px-3 text-sm transition-colors hover:border-brand hover:text-brand dark:border-carbon-border dark:bg-carbon-surface"
+      disabled={isPending}
+      aria-busy={isPending}
+      className="inline-flex h-9 items-center gap-2 rounded-button border border-outline-subtle bg-canvas-surface px-3 text-sm transition-colors hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-60 dark:border-carbon-border dark:bg-carbon-surface"
     >
       <span className="text-base leading-none">{emoji}</span>
       {isPending ? (
