@@ -6,8 +6,9 @@ export default async function Reactions({ slug }: { slug: string }) {
   const reactions = await getReactionsBySlug(slug);
 
   return (
-    <section className="py-12">
-      <ul className="flex flex-wrap items-center">
+    <section className="pb-12">
+      <span className="label-mono">— Reactions</span>
+      <ul className="mt-4 flex flex-wrap items-center gap-2">
         {reactions.map((reaction) => {
           return (
             <li key={reaction.emoji}>

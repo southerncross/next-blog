@@ -10,12 +10,20 @@ type Props = {
 
 export function PostHeader({ title, date }: Props) {
   return (
-    <>
-      <PostTitle>{title}</PostTitle>
-      <div className="mb-6 flex max-w-2xl items-center md:mb-12">
-        <Avatar name={AUTHOR_NAME} picture={AUTHOR_AVATAR} />
-        <DateFormatter date={date} className="ml-3 text-sm text-gray-500" />
+    <header className="not-prose mb-16 border-b border-outline-subtle pb-10 pt-12 dark:border-carbon-border md:pt-16">
+      <div className="mb-8 flex items-center gap-4">
+        <span className="label-mono">— Article</span>
+        <span className="h-px flex-1 bg-outline-subtle dark:bg-carbon-border" />
+        <DateFormatter
+          date={date}
+          format="yyyy.MM.dd"
+          className="font-mono text-xs text-ink-muted dark:text-carbon-muted"
+        />
       </div>
-    </>
+      <PostTitle>{title}</PostTitle>
+      <div className="flex items-center gap-3">
+        <Avatar name={AUTHOR_NAME} picture={AUTHOR_AVATAR} />
+      </div>
+    </header>
   );
 }

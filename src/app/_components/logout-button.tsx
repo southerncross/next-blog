@@ -3,7 +3,7 @@
 export default function LogoutButton() {
   return (
     <a
-      className="px-2 py-2 text-blue-700 hover:text-blue-600"
+      className="font-mono text-xs uppercase tracking-wider text-ink-muted transition-colors hover:text-brand dark:text-carbon-muted"
       href="/api/auth/logout"
     >
       Log out

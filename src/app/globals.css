@@ -1,3 +1,65 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 245 245 242;
+    --foreground: 17 17 17;
+    --muted: 107 114 128;
+    --border: 209 213 219;
+    --surface: 255 255 255;
+    --brand: 243 111 54;
+  }
+
+  .dark {
+    --background: 10 10 10;
+    --foreground: 249 250 251;
+    --muted: 156 163 175;
+    --border: 31 31 31;
+    --surface: 17 17 17;
+    --brand: 243 111 54;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
+  }
+
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+  }
+
+  ::selection {
+    background-color: rgba(243, 111, 54, 0.18);
+    color: rgb(var(--foreground));
+  }
+}
+
+@layer components {
+  .label-mono {
+    @apply font-mono text-xs uppercase tracking-widest text-ink-muted;
+  }
+
+  .hairline {
+    @apply border-outline-subtle dark:border-carbon-border;
+  }
+
+  .card-surface {
+    @apply rounded-card border border-outline-subtle bg-canvas-surface dark:border-carbon-border dark:bg-carbon-surface;
+  }
+
+  .btn-primary {
+    @apply inline-flex h-10 items-center justify-center rounded-button bg-brand px-5 text-sm font-medium text-white transition-colors hover:bg-brand-600 disabled:opacity-60;
+  }
+
+  .btn-secondary {
+    @apply inline-flex h-10 items-center justify-center rounded-button border border-outline px-5 text-sm font-medium text-ink transition-colors hover:bg-canvas-surface dark:border-carbon-border dark:text-carbon-text dark:hover:bg-carbon-surface;
+  }
+
+  .link-quiet {
+    @apply text-ink-muted underline-offset-4 transition-colors hover:text-ink hover:underline dark:text-carbon-muted dark:hover:text-carbon-text;
+  }
+}

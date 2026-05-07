@@ -1,4 +1,4 @@
-import { parseISO, format } from 'date-fns';
+import { parseISO, format, isValid } from 'date-fns';
 
 type Props = {
   date: string | Date;
@@ -8,14 +8,19 @@ type Props = {
 
 const DateFormatter = ({
   date,
-  format: _format = 'LLLL	d, yyyy',
+  format: _format = 'yyyy.MM.dd',
   className,
 }: Props) => {
   const _date = typeof date === 'string' ? parseISO(date) : date;
-  const _dateString = typeof date === 'string' ? date : date.toISOString();
+  const valid = isValid(_date);
+  const _dateString = valid
+    ? typeof date === 'string'
+      ? date
+      : _date.toISOString()
+    : undefined;
   return (
     <time className={className} dateTime={_dateString}>
-      {format(date, _format)}
+      {valid ? format(_date, _format) : typeof date === 'string' ? date : ''}
     </time>
   );
 };

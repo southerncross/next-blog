@@ -2,7 +2,6 @@
 
 import dynamic from 'next/dynamic';
 import { EmojiClickData, Theme } from 'emoji-picker-react';
-import { Button } from '@nextui-org/button';
 import { Popover, PopoverTrigger, PopoverContent } from '@nextui-org/popover';
 import { useTheme } from 'next-themes';
 
@@ -20,14 +19,22 @@ export default function ReactionForm({ slug }: { slug: string }) {
   return (
     <Popover classNames={{ content: 'px-0 py-0' }}>
       <PopoverTrigger>
-        <Button
-          isIconOnly
-          variant="light"
-          radius="md"
+        <button
+          type="button"
           aria-label="Add reaction"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-button border border-dashed border-outline-subtle text-ink-muted transition-colors hover:border-brand hover:text-brand dark:border-carbon-border dark:text-carbon-muted"
         >
-          +
-        </Button>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            className="h-4 w-4"
+            aria-hidden
+          >
+            <path strokeLinecap="round" d="M12 5v14M5 12h14" />
+          </svg>
+        </button>
       </PopoverTrigger>
       <PopoverContent>
         <EmojiPicker

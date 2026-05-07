@@ -4,8 +4,6 @@ type Props = {
 
 export function PostBody({ content }: Props) {
   return (
-    <div className="mx-auto max-w-2xl">
-      <div dangerouslySetInnerHTML={{ __html: content }} />
-    </div>
+    <div className="post-body" dangerouslySetInnerHTML={{ __html: content }} />
   );
 }

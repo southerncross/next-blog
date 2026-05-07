@@ -8,7 +8,7 @@ export default function Index() {
 
   return (
     <main>
-      <Container>
+      <Container size="wide">
         <Intro />
         <Posts posts={allPosts} />
       </Container>
