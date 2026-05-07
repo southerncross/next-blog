@@ -10,6 +10,7 @@ import { PostBody } from '../../_components/post-body';
 import { PostHeader } from '../../_components/post-header';
 import Comments from '@/app/_components/comments';
 import Reactions from '@/app/_components/reactions';
+import ReadingProgress from '@/app/_components/reading-progress';
 
 export default async function Post({ params }: Params) {
   const post = getPostBySlug(params.slug);
@@ -22,15 +23,23 @@ export default async function Post({ params }: Params) {
 
   return (
     <main>
-      <Container size="wide">
-        <Header />
-      </Container>
+      <div className="sticky top-0 z-40 bg-canvas dark:bg-carbon">
+        <Container size="wide">
+          <Header />
+        </Container>
+        <ReadingProgress />
+      </div>
       <Container size="narrow" className="pb-24">
         <article className="prose prose-neutral max-w-none dark:prose-invert md:prose-lg">
-          <PostHeader title={post.title} date={post.date} />
-          <PostBody content={content} />
+          <PostHeader title={post.title} date={post.date} slug={post.slug} />
+          <div className="anim-fade-up" style={{ animationDelay: '240ms' }}>
+            <PostBody content={content} />
+          </div>
         </article>
-        <div className="mt-16 border-t border-outline-subtle pt-10 dark:border-carbon-border">
+        <div
+          className="anim-fade-up mt-16 border-t border-outline-subtle pt-10 dark:border-carbon-border"
+          style={{ animationDelay: '320ms' }}
+        >
           <Suspense>
             <Reactions slug={post.slug} />
           </Suspense>
