@@ -11,6 +11,7 @@ Operational guide for AI coding agents (Droid, Claude, Cursor, Copilot, etc.) wo
   pnpm install --frozen-lockfile
   pnpm lint
   pnpm typecheck
+  pnpm format:check
   pnpm build
   ```
 - Commit style: Conventional Commit prefix + gitmoji shortcode, e.g. `feat: :sparkles: Add anchor link for markdown header.`
@@ -128,9 +129,10 @@ Before opening a PR or marking a task complete, an agent **must**:
 1. `pnpm install --frozen-lockfile` succeeds.
 2. `pnpm lint` reports no errors.
 3. `pnpm typecheck` reports no errors.
-4. `pnpm build` completes successfully.
-5. Any new content in `_posts/` includes the standard front-matter (`title`, `excerpt`, `date`, `coverImage`, `author`).
-6. No file under `.env*` (other than `.env.example`) is staged.
+4. `pnpm format:check` reports no errors.
+5. `pnpm build` completes successfully.
+6. Any new content in `_posts/` includes the standard front-matter (`title`, `excerpt`, `date`, `coverImage`, `author`).
+7. No file under `.env*` (other than `.env.example`) is staged.
 
 If any of the above fails, fix it before handing back. Do not silence rules with `// eslint-disable` or `// @ts-ignore` to make the gate green.
 
