@@ -1,26 +1,48 @@
 import { SITE_NAME, SITE_DESCRIPTION } from '@/lib/constants';
 import ThemeSwitcher from './theme-switcher';
 import GithubIcon from './github-icon';
+import { HeroBackdrop } from './hero-backdrop';
 
 export function Intro() {
   return (
-    <section className="border-b border-outline-subtle pb-16 pt-24 dark:border-carbon-border md:pb-24 md:pt-32">
+    <section className="relative isolate overflow-hidden border-b border-outline-subtle pb-16 pt-24 dark:border-carbon-border md:pb-24 md:pt-32">
+      <HeroBackdrop />
       <div className="flex items-start justify-between">
         <div className="max-w-2xl">
-          <span className="label-mono">— Personal Blog</span>
-          <h1 className="mt-6 text-display-sm font-semibold text-ink dark:text-carbon-text md:text-display-md">
+          <div className="anim-fade-up flex items-center gap-3">
+            <span className="label-mono">— Personal Blog</span>
+            <span
+              className="cli-cursor inline-flex items-center rounded-md border border-outline-subtle bg-canvas-surface/60 px-2 py-0.5 font-mono text-[11px] text-ink-muted backdrop-blur-sm dark:border-carbon-border dark:bg-carbon-surface/60 dark:text-carbon-muted"
+              aria-hidden="true"
+            >
+              ~/blog $ ready
+            </span>
+          </div>
+          <h1
+            className="anim-fade-up mt-6 text-display-sm font-semibold text-ink dark:text-carbon-text md:text-display-md"
+            style={{ animationDelay: '80ms' }}
+          >
             {SITE_NAME}
           </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-muted md:text-lg">
+          <p
+            className="anim-fade-up mt-6 max-w-xl text-base leading-relaxed text-ink-muted md:text-lg"
+            style={{ animationDelay: '160ms' }}
+          >
             {SITE_DESCRIPTION}
           </p>
         </div>
-        <div className="hidden items-center gap-2 md:flex">
+        <div
+          className="anim-fade-up hidden items-center gap-2 md:flex"
+          style={{ animationDelay: '200ms' }}
+        >
           <GithubIcon />
           <ThemeSwitcher />
         </div>
       </div>
-      <div className="mt-10 flex items-center gap-2 md:hidden">
+      <div
+        className="anim-fade-up mt-10 flex items-center gap-2 md:hidden"
+        style={{ animationDelay: '200ms' }}
+      >
         <GithubIcon />
         <ThemeSwitcher />
       </div>

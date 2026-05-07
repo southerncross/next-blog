@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CSSProperties } from 'react';
 import DateFormatter from './date-formatter';
 
 type Props = {
@@ -6,11 +7,20 @@ type Props = {
   title: string;
   date: string;
   slug: string;
+  className?: string;
+  style?: CSSProperties;
 };
 
-export function PostPreview({ index, title, date, slug }: Props) {
+export function PostPreview({
+  index,
+  title,
+  date,
+  slug,
+  className,
+  style,
+}: Props) {
   return (
-    <li className="group">
+    <li className={`group ${className ?? ''}`} style={style}>
       <Link
         href={`/posts/${slug}`}
         className="grid grid-cols-[auto_1fr_auto] items-baseline gap-6 py-6 transition-colors md:py-7"

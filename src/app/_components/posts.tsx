@@ -25,6 +25,8 @@ export function Posts({ posts }: Props) {
             title={post.title}
             date={post.date}
             slug={post.slug}
+            className="anim-fade-up"
+            style={{ animationDelay: `${Math.min(idx, 8) * 60}ms` }}
           />
         ))}
       </ol>
