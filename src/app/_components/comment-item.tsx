@@ -5,12 +5,19 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 
 import { Comment } from '@/interfaces/comment';
 import { deleteComment } from '@/lib/actions';
+import { Locale, getMessages } from '@/lib/i18n';
 import Avatar from './avatar';
 import Spinner from './spinner';
 import DateFormatter from './date-formatter';
 
-export default function CommentItem({ comment }: { comment: Comment }) {
+type Props = {
+  comment: Comment;
+  locale: Locale;
+};
+
+export default function CommentItem({ comment, locale }: Props) {
   const { id, slug, content, author, createdAt } = comment;
+  const t = getMessages(locale);
   const { user } = useUser();
   const deletable = user?.sub === author.sub;
   const [pending, setPending] = useState(false);
@@ -43,7 +50,7 @@ export default function CommentItem({ comment }: { comment: Comment }) {
                 className="font-mono text-xs uppercase tracking-wider text-ink-muted transition-colors hover:text-brand"
                 onClick={deleteCommentById}
               >
-                Delete
+                {t.comments.delete}
               </button>
             )}
           </div>

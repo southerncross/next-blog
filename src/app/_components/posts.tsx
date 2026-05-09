@@ -1,21 +1,24 @@
 import { Post } from '@/interfaces/post';
+import { Locale, getMessages } from '@/lib/i18n';
 import { PostPreview } from './post-preview';
 
 type Props = {
   posts: Post[];
+  locale: Locale;
 };
 
-export function Posts({ posts }: Props) {
+export function Posts({ posts, locale }: Props) {
+  const t = getMessages(locale);
   return (
     <section className="py-16 md:py-24">
       <div className="mb-10 flex items-end justify-between">
         <div>
-          <span className="label-mono">— Index</span>
+          <span className="label-mono">{t.posts.label}</span>
           <h2 className="mt-4 text-h2 font-semibold tracking-tighter text-ink dark:text-carbon-text">
-            All Posts
+            {t.posts.title}
           </h2>
         </div>
-        <span className="label-mono">{posts.length} entries</span>
+        <span className="label-mono">{t.posts.count(posts.length)}</span>
       </div>
       <ol className="divide-y divide-outline-subtle border-y border-outline-subtle dark:divide-carbon-border dark:border-carbon-border">
         {posts.map((post, idx) => (
@@ -25,6 +28,8 @@ export function Posts({ posts }: Props) {
             title={post.title}
             date={post.date}
             slug={post.slug}
+            locale={locale}
+            isFallback={post.isFallback}
             className="anim-fade-up"
             style={{ animationDelay: `${Math.min(idx, 8) * 60}ms` }}
           />

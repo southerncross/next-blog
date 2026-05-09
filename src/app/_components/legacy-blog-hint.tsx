@@ -1,21 +1,29 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import { Locale, canonicalize, getMessages } from '@/lib/i18n';
 
-export default function LegacyBlogHint() {
+type Props = {
+  locale?: Locale;
+};
+
+export default function LegacyBlogHint({ locale }: Props) {
   const pathname = usePathname();
-  const isLegacyBlog = /\d{4}\/\d{2}\//.test(pathname);
+  const { locale: detected, canonical } = canonicalize(pathname || '/');
+  const effective: Locale = locale ?? detected;
+  const isLegacyBlog = /\d{4}\/\d{2}\//.test(canonical);
 
   if (!isLegacyBlog) {
     return null;
   }
 
-  const legacyBlogUrl = `https://southerncross.github.io/blog${pathname}`;
+  const legacyBlogUrl = `https://southerncross.github.io/blog${canonical}`;
+  const t = getMessages(effective);
 
   return (
     <div className="card-surface mt-6 max-w-xl px-5 py-4 text-left text-sm text-ink-muted dark:text-carbon-muted">
       <p>
-        或许你是想访问旧的博客文章？可以看这里：
+        {t.notFound.legacyHint}
         <br />
         <a
           className="break-all font-mono text-xs text-brand underline-offset-4 hover:underline"

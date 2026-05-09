@@ -5,12 +5,19 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 import clsx from 'clsx';
 
 import { createComment } from '@/lib/actions';
+import { Locale, getMessages } from '@/lib/i18n';
 import Avatar from './avatar';
 import LogoutButton from './logout-button';
 import LoginButton from './login-button';
 import Spinner from './spinner';
 
-export default function CommentForm({ slug }: { slug: string }) {
+type Props = {
+  slug: string;
+  locale: Locale;
+};
+
+export default function CommentForm({ slug, locale }: Props) {
+  const t = getMessages(locale);
   const { user, error, isLoading } = useUser();
   const [content, setContent] = useState('');
   const [pending, setPending] = useState(false);
@@ -34,7 +41,7 @@ export default function CommentForm({ slug }: { slug: string }) {
   }
 
   if (error || !user) {
-    return <LoginButton />;
+    return <LoginButton locale={locale} />;
   }
 
   return (
@@ -44,11 +51,11 @@ export default function CommentForm({ slug }: { slug: string }) {
         className="mt-4 block w-full resize-y rounded-button border border-outline bg-canvas-surface p-3 text-[15px] leading-relaxed text-ink placeholder:text-ink-subtle focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 dark:border-carbon-border dark:bg-carbon-surface dark:text-carbon-text dark:placeholder:text-carbon-muted"
         rows={4}
         value={content}
-        placeholder="Add your comment..."
+        placeholder={t.comments.placeholder}
         onChange={(e) => setContent(e.target.value)}
       />
       <div className="mt-4 flex items-center justify-between">
-        <LogoutButton />
+        <LogoutButton locale={locale} />
         <button
           type="button"
           className={clsx(
@@ -58,7 +65,7 @@ export default function CommentForm({ slug }: { slug: string }) {
           onClick={createCommentWithSlug}
         >
           {pending && <Spinner color="white" />}
-          <span className={clsx({ 'ml-2': pending })}>Submit</span>
+          <span className={clsx({ 'ml-2': pending })}>{t.comments.submit}</span>
         </button>
       </div>
     </div>

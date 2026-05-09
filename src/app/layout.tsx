@@ -1,13 +1,15 @@
 import Footer from '@/app/_components/footer';
+import { SITE_NAME, SITE_HOST, AUTHOR_AVATAR, GTM_ID } from '@/lib/constants';
 import {
-  SITE_NAME,
-  SITE_HOST,
-  SITE_DESCRIPTION,
-  AUTHOR_AVATAR,
-  GTM_ID,
-} from '@/lib/constants';
+  HTML_LANG,
+  OG_LOCALE,
+  canonicalize,
+  getMessages,
+  localePath,
+} from '@/lib/i18n';
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
+import { headers } from 'next/headers';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleTagManager } from '@next/third-parties/google';
@@ -27,44 +29,65 @@ const mono = JetBrains_Mono({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_HOST),
-  title: SITE_NAME,
-  description: SITE_DESCRIPTION,
-  openGraph: {
+function resolveLocaleFromHeaders() {
+  const path = headers().get('x-pathname') || '/';
+  return canonicalize(path);
+}
+
+export function generateMetadata(): Metadata {
+  const { locale, canonical } = resolveLocaleFromHeaders();
+  const t = getMessages(locale);
+  const oppositeLocale = locale === 'zh' ? 'en' : 'zh';
+
+  return {
+    metadataBase: new URL(SITE_HOST),
     title: SITE_NAME,
-    description: SITE_DESCRIPTION,
-    url: SITE_HOST,
-    siteName: SITE_NAME,
-    images: [AUTHOR_AVATAR],
-    locale: 'zh_CN',
-    type: 'website',
-  },
-  icons: {
-    icon: [
-      {
-        sizes: '32x32',
-        url: '/meta/favicon-32x32.png',
+    description: t.siteDescription,
+    openGraph: {
+      title: SITE_NAME,
+      description: t.siteDescription,
+      url: localePath(locale, canonical),
+      siteName: SITE_NAME,
+      images: [AUTHOR_AVATAR],
+      locale: OG_LOCALE[locale],
+      alternateLocale: [OG_LOCALE[oppositeLocale]],
+      type: 'website',
+    },
+    alternates: {
+      canonical: localePath(locale, canonical),
+      languages: {
+        'zh-Hans': localePath('zh', canonical),
+        en: localePath('en', canonical),
+        'x-default': localePath('zh', canonical),
       },
-      {
-        sizes: '16x16',
-        url: '/meta/favicon-16x16.png',
-      },
-    ],
-    shortcut: '/meta/favicon.ico',
-    apple: '/meta/apple-touch-icon.png',
-  },
-  manifest: '/meta/site.webmanifest',
-};
+    },
+    icons: {
+      icon: [
+        {
+          sizes: '32x32',
+          url: '/meta/favicon-32x32.png',
+        },
+        {
+          sizes: '16x16',
+          url: '/meta/favicon-16x16.png',
+        },
+      ],
+      shortcut: '/meta/favicon.ico',
+      apple: '/meta/apple-touch-icon.png',
+    },
+    manifest: '/meta/site.webmanifest',
+  };
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { locale } = resolveLocaleFromHeaders();
   return (
     <html
-      lang="en"
+      lang={HTML_LANG[locale]}
       className={`${sans.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
@@ -72,7 +95,7 @@ export default function RootLayout({
         <Providers>
           <div className="flex min-h-screen flex-col">
             <div className="flex-1">{children}</div>
-            <Footer />
+            <Footer locale={locale} />
           </div>
         </Providers>
         <SpeedInsights />
