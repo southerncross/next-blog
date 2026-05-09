@@ -9,7 +9,7 @@ import { notFound } from 'next/navigation';
 
 const postsDirectory = join(process.cwd(), '_posts');
 
-const LOCALE_SUFFIX_RE = /\.([a-z]{2})\.md$/i;
+const LOCALE_SUFFIXES = LOCALES.map((locale) => `.${locale}.md`);
 
 function listMarkdownFiles(): string[] {
   return fs.readdirSync(postsDirectory).filter((f) => f.endsWith('.md'));
@@ -18,11 +18,13 @@ function listMarkdownFiles(): string[] {
 export function getPostSlugs(): string[] {
   const slugs = new Set<string>();
   for (const file of listMarkdownFiles()) {
-    const match = file.match(LOCALE_SUFFIX_RE);
-    if (match) {
-      slugs.add(file.slice(0, -match[0].length));
+    const localeSuffix = LOCALE_SUFFIXES.find((suffix) =>
+      file.endsWith(suffix),
+    );
+    if (localeSuffix) {
+      slugs.add(file.slice(0, -localeSuffix.length));
     } else {
-      slugs.add(file.slice(0, -3));
+      slugs.add(file.slice(0, -'.md'.length));
     }
   }
   return Array.from(slugs);

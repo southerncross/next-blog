@@ -24,6 +24,7 @@ export function generateMetadata({ params }: Params): Metadata {
   const title = `${post.title} | ${SITE_NAME}`;
 
   return {
+    title,
     openGraph: {
       title,
       images: [AUTHOR_AVATAR],
