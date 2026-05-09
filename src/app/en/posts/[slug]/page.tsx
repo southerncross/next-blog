@@ -10,12 +10,12 @@ type Params = {
   };
 };
 
-export default function Post({ params }: Params) {
-  return <PostView slug={params.slug} locale="zh" />;
+export default function PostEn({ params }: Params) {
+  return <PostView slug={params.slug} locale="en" />;
 }
 
 export function generateMetadata({ params }: Params): Metadata {
-  const post = getPostBySlug(params.slug, 'zh');
+  const post = getPostBySlug(params.slug, 'en');
 
   if (!post) {
     return notFound();
@@ -32,7 +32,7 @@ export function generateMetadata({ params }: Params): Metadata {
 }
 
 export function generateStaticParams() {
-  const posts = getAllPosts('zh');
+  const posts = getAllPosts('en');
 
   return posts.map((post) => ({
     slug: post.slug,

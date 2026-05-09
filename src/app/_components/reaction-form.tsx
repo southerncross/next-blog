@@ -7,11 +7,18 @@ import { useTheme } from 'next-themes';
 
 import { addReaction } from '@/lib/actions';
 import { THEME } from '@/lib/constants';
+import { Locale, getMessages } from '@/lib/i18n';
 
 const EmojiPicker = dynamic(() => import('emoji-picker-react'), { ssr: false });
 
-export default function ReactionForm({ slug }: { slug: string }) {
+type Props = {
+  slug: string;
+  locale: Locale;
+};
+
+export default function ReactionForm({ slug, locale }: Props) {
   const { resolvedTheme } = useTheme();
+  const t = getMessages(locale);
   const onEmojiClick = async (reaction: EmojiClickData) => {
     await addReaction(reaction.emoji, slug);
   };
@@ -21,7 +28,7 @@ export default function ReactionForm({ slug }: { slug: string }) {
       <PopoverTrigger>
         <button
           type="button"
-          aria-label="Add reaction"
+          aria-label={t.reactions.add}
           className="inline-flex h-9 w-9 items-center justify-center rounded-button border border-dashed border-outline-subtle text-ink-muted transition-colors hover:border-brand hover:text-brand dark:border-carbon-border dark:text-carbon-muted"
         >
           <svg

@@ -5,8 +5,14 @@ import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 
 import { THEME } from '@/lib/constants';
+import { Locale, getMessages } from '@/lib/i18n';
 
-export default function ThemeSwitcher({ className }: { className?: string }) {
+type Props = {
+  className?: string;
+  locale?: Locale;
+};
+
+export default function ThemeSwitcher({ className, locale = 'zh' }: Props) {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
 
@@ -19,7 +25,7 @@ export default function ThemeSwitcher({ className }: { className?: string }) {
   return (
     <button
       type="button"
-      aria-label="Toggle theme"
+      aria-label={getMessages(locale).toggle.theme}
       onClick={() => setTheme(isDark ? THEME.LIGHT : THEME.DARK)}
       className={clsx(
         'inline-flex h-9 w-9 items-center justify-center rounded-button border border-transparent text-ink-muted transition-colors hover:border-outline hover:text-ink dark:text-carbon-muted dark:hover:border-carbon-border dark:hover:text-carbon-text',

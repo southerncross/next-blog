@@ -1,7 +1,13 @@
 import Container from '@/app/_components/container';
 import { AUTHOR_NAME, GITHUB_URL } from '@/lib/constants';
+import { Locale, getMessages } from '@/lib/i18n';
 
-export function Footer() {
+type Props = {
+  locale?: Locale;
+};
+
+export function Footer({ locale = 'zh' }: Props) {
+  const t = getMessages(locale);
   return (
     <footer className="border-t border-outline-subtle py-12 dark:border-carbon-border">
       <Container size="wide">
@@ -22,7 +28,7 @@ export function Footer() {
               GitHub
             </a>
             <span className="font-mono text-xs text-ink-subtle dark:text-carbon-muted">
-              Built with Next.js
+              {t.footer.builtWith}
             </span>
           </div>
         </div>

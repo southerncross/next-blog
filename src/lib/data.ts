@@ -1,5 +1,6 @@
 import { Post } from '@/interfaces/post';
 import { Comment } from '@/interfaces/comment';
+import { DEFAULT_LOCALE, LOCALES, Locale } from '@/lib/i18n';
 import fs from 'fs';
 import matter from 'gray-matter';
 import { join } from 'path';
@@ -8,26 +9,72 @@ import { notFound } from 'next/navigation';
 
 const postsDirectory = join(process.cwd(), '_posts');
 
-export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory);
+const LOCALE_SUFFIX_RE = /\.([a-z]{2})\.md$/i;
+
+function listMarkdownFiles(): string[] {
+  return fs.readdirSync(postsDirectory).filter((f) => f.endsWith('.md'));
 }
 
-export function getPostBySlug(slug: string) {
+export function getPostSlugs(): string[] {
+  const slugs = new Set<string>();
+  for (const file of listMarkdownFiles()) {
+    const match = file.match(LOCALE_SUFFIX_RE);
+    if (match) {
+      slugs.add(file.slice(0, -match[0].length));
+    } else {
+      slugs.add(file.slice(0, -3));
+    }
+  }
+  return Array.from(slugs);
+}
+
+function fileForLocale(slug: string, locale: Locale): string | null {
+  const filename =
+    locale === DEFAULT_LOCALE ? `${slug}.md` : `${slug}.${locale}.md`;
+  const fullPath = join(postsDirectory, filename);
+  return fs.existsSync(fullPath) ? fullPath : null;
+}
+
+function getAvailableLocales(slug: string): Locale[] {
+  return LOCALES.filter((l) => fileForLocale(slug, l) !== null);
+}
+
+export function getPostBySlug(
+  slug: string,
+  locale: Locale = DEFAULT_LOCALE,
+): Post {
   const realSlug = slug.replace(/\.md$/, '');
-  const fullPath = join(postsDirectory, `${realSlug}.md`);
-  if (!fs.existsSync(fullPath)) {
+
+  let actualLocale: Locale = locale;
+  let path = fileForLocale(realSlug, locale);
+
+  if (!path && locale !== DEFAULT_LOCALE) {
+    path = fileForLocale(realSlug, DEFAULT_LOCALE);
+    actualLocale = DEFAULT_LOCALE;
+  }
+
+  if (!path) {
     notFound();
   }
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+
+  const fileContents = fs.readFileSync(path, 'utf8');
   const { data, content } = matter(fileContents);
 
-  return { ...data, slug: realSlug, content } as Post;
+  return {
+    ...(data as Pick<Post, 'title' | 'date' | 'preview'>),
+    slug: realSlug,
+    content,
+    locale: actualLocale,
+    requestedLocale: locale,
+    isFallback: actualLocale !== locale,
+    availableLocales: getAvailableLocales(realSlug),
+  } as Post;
 }
 
-export function getAllPosts(): Post[] {
+export function getAllPosts(locale: Locale = DEFAULT_LOCALE): Post[] {
   const slugs = getPostSlugs();
   const posts = slugs
-    .map((slug) => getPostBySlug(slug))
+    .map((slug) => getPostBySlug(slug, locale))
     .filter((post) => process.env.PREVIEW_MODE || !post.preview)
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;

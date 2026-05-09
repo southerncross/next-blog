@@ -1,17 +1,5 @@
-import Container from '@/app/_components/container';
-import { Intro } from '@/app/_components/intro';
-import { Posts } from '@/app/_components/posts';
-import { getAllPosts } from '../lib/data';
+import { HomeView } from '@/app/_components/home-view';
 
 export default function Index() {
-  const allPosts = getAllPosts();
-
-  return (
-    <main>
-      <Container size="wide">
-        <Intro />
-        <Posts posts={allPosts} />
-      </Container>
-    </main>
-  );
+  return <HomeView locale="zh" />;
 }

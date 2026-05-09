@@ -6,6 +6,13 @@ import { revalidatePath } from 'next/cache';
 import { getSession } from '@auth0/nextjs-auth0';
 
 import { Reaction } from '@/interfaces/reaction';
+import { LOCALES, postPathFor } from '@/lib/i18n';
+
+function revalidatePostForAllLocales(slug: string) {
+  for (const locale of LOCALES) {
+    revalidatePath(postPathFor(locale, slug));
+  }
+}
 
 const CreateComment = z.object({
   slug: z.string(),
@@ -32,7 +39,7 @@ export async function createComment(slug: string, content: string) {
       picture = ${user.picture}
   `;
 
-  revalidatePath(`/posts/${slug}`);
+  revalidatePostForAllLocales(slug);
 }
 
 const DeleteComment = z.object({
@@ -52,7 +59,7 @@ export async function deleteComment(id: string, slug: string) {
     WHERE id = ${id} AND slug=${slug} AND author_sub=${user.sub}
   `;
 
-  revalidatePath(`/posts/${slug}`);
+  revalidatePostForAllLocales(slug);
 }
 
 const GetReactionsBySlug = z.object({
@@ -116,5 +123,5 @@ export async function addReaction(emoji: string, slug: string) {
     DO UPDATE SET count = reactions.count + 1
   `;
 
-  revalidatePath(`/posts/${slug}`);
+  revalidatePostForAllLocales(slug);
 }
