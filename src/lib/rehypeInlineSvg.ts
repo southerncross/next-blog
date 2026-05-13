@@ -192,11 +192,12 @@ export default function rehypeInlineSvg(options: Options = {}) {
 
       const src = node.properties.src;
       if (typeof src !== 'string') return;
-      if (!src.toLowerCase().endsWith('.svg')) return;
       if (!src.startsWith('/')) return;
       if (src.startsWith('//')) return;
 
       const cleanSrc = src.split('?')[0].split('#')[0];
+      if (!cleanSrc.toLowerCase().endsWith('.svg')) return;
+
       const absolutePath = path.join(publicDir, cleanSrc);
       const normalizedPublic = path.resolve(publicDir);
       const normalizedTarget = path.resolve(absolutePath);
