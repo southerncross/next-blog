@@ -42,6 +42,10 @@ Italicized text is the _cat's meow_.
 
 ![alt text](/assets/images/avatar.jpg)
 
+Inline SVG (inherits text color, friendly to dark mode):
+
+![A check mark](/assets/images/inline-svg-demo.svg)
+
 # Extended Syntax
 
 | Syntax    | Description |

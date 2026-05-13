@@ -36,6 +36,11 @@
     background-color: rgba(243, 111, 54, 0.18);
     color: rgb(var(--foreground));
   }
+
+  .post-body svg {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 @layer components {
