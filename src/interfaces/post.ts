@@ -5,6 +5,8 @@ export type Post = {
   title: string;
   date: string;
   preview: boolean;
+  description: string;
+  topics: string[];
   content: string;
   locale: Locale;
   requestedLocale: Locale;

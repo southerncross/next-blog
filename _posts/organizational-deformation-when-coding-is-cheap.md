@@ -1,6 +1,8 @@
 ---
 title: '当编码不再是瓶颈：组织变形的隐藏力学'
 date: '2026-05-14T08:00:00+08:00'
+description: '这篇文章以 Anthropic Claude Code 团队的实践为切口，深入分析 AI-first 组织在“编码去瓶颈化”后的深层结构变化：瓶颈从执行转向判断，流程从控制产能转向重构风险，共识、角色与管理机制被迫重写。相比单纯讨论 AI 提效，本文更关注技术冲击下组织设计、权力分配与协作逻辑的系统性重塑。'
+topics: ['agentic-workflow']
 ---
 
 Fiona Fung 在 Anthropic 的 Code with Claude 大会上讲了 28 分钟。她说 Claude Code 团队现在"四个月没见过非 AI 辅助的提交"，PR 的默认讨论方式是"让 Claude 同时搓出三个版本直接对比"， manager 必须先做 IC——"不接受就趁早好聚好散"。

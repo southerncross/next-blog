@@ -2,6 +2,8 @@
 title: 'test'
 date: '2024-02-21T16:00:00+08:00'
 preview: true
+description: 'This is a description.'
+topics: ['Topic A', 'Topic B']
 ---
 
 this is a test file
