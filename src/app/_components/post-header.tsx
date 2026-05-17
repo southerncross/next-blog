@@ -13,6 +13,8 @@ type Props = {
   locale: Locale;
   requestedLocale: Locale;
   isFallback: boolean;
+  description: string;
+  topics: string[];
 };
 
 export function PostHeader({
@@ -22,6 +24,8 @@ export function PostHeader({
   locale,
   requestedLocale,
   isFallback,
+  description,
+  topics,
 }: Props) {
   const t = getMessages(locale);
   const showFallback = isFallback && requestedLocale !== 'zh';
@@ -54,6 +58,29 @@ export function PostHeader({
       <div className="anim-fade-up" style={{ animationDelay: '80ms' }}>
         <PostTitle>{title}</PostTitle>
       </div>
+      {topics.length > 0 && (
+        <div
+          className="anim-fade-up mb-6 flex flex-wrap items-center gap-2"
+          style={{ animationDelay: '120ms' }}
+        >
+          {topics.map((topic) => (
+            <span
+              key={topic}
+              className="inline-flex items-center rounded-md border border-outline-subtle bg-canvas-surface/60 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-ink-muted dark:border-carbon-border dark:bg-carbon-surface/60 dark:text-carbon-muted"
+            >
+              #{topic}
+            </span>
+          ))}
+        </div>
+      )}
+      {description && (
+        <p
+          className="anim-fade-up mb-8 border-l-2 border-outline-subtle pl-4 text-base leading-relaxed text-ink-muted dark:border-carbon-border dark:text-carbon-muted md:text-lg"
+          style={{ animationDelay: '140ms' }}
+        >
+          {description}
+        </p>
+      )}
       <div
         className="anim-fade-up flex items-center gap-3"
         style={{ animationDelay: '160ms' }}

@@ -36,6 +36,8 @@ export async function PostView({ slug, locale }: Props) {
             locale={post.locale}
             requestedLocale={post.requestedLocale}
             isFallback={post.isFallback}
+            description={post.description}
+            topics={post.topics}
           />
           <div className="anim-fade-up" style={{ animationDelay: '240ms' }}>
             <PostBody content={content} />

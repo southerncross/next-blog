@@ -62,8 +62,14 @@ export function getPostBySlug(
   const fileContents = fs.readFileSync(path, 'utf8');
   const { data, content } = matter(fileContents);
 
+  const frontMatter = data as Partial<
+    Pick<Post, 'title' | 'date' | 'preview' | 'description' | 'topics'>
+  >;
+
   return {
-    ...(data as Pick<Post, 'title' | 'date' | 'preview'>),
+    ...frontMatter,
+    description: frontMatter.description ?? '',
+    topics: Array.isArray(frontMatter.topics) ? frontMatter.topics : [],
     slug: realSlug,
     content,
     locale: actualLocale,
