@@ -67,6 +67,51 @@
   .prose :where(span[data-rehype-pretty-code-figure]) > code::after {
     content: none !important;
   }
+
+  .prose figure[data-rehype-pretty-code-figure] {
+    margin: 1.6em 0;
+    border-radius: 8px;
+    border: 1px solid #1f1f1f;
+    background-color: #0a0a0a;
+    overflow: hidden;
+  }
+
+  .prose figure[data-rehype-pretty-code-figure] > pre {
+    background-color: transparent !important;
+    color: #e5e7eb !important;
+    margin: 0 !important;
+    padding: 1em 1.25em !important;
+    border-radius: 0 !important;
+    font-size: 0.875em;
+    line-height: 1.65;
+    overflow-x: auto;
+  }
+
+  .prose figure[data-rehype-pretty-code-figure] > pre > code {
+    background-color: transparent !important;
+    padding: 0 !important;
+    font-weight: 400;
+    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+      Consolas, monospace;
+  }
+
+  .prose figure[data-rehype-pretty-code-figure] > pre > code::before,
+  .prose figure[data-rehype-pretty-code-figure] > pre > code::after {
+    content: none !important;
+  }
+
+  .prose figure[data-rehype-pretty-code-figure] > pre::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .prose figure[data-rehype-pretty-code-figure] > pre::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+  }
+
+  .prose figure[data-rehype-pretty-code-figure] > pre::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
 }
 
 @layer components {
