@@ -41,6 +41,32 @@
     max-width: 100%;
     height: auto;
   }
+
+  .prose :where(span[data-rehype-pretty-code-figure]) > code {
+    background-color: rgb(243 244 246) !important;
+    color: rgb(17 17 17) !important;
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.875em;
+    font-weight: 500;
+    border: 1px solid rgb(229 231 235);
+  }
+
+  .dark .prose :where(span[data-rehype-pretty-code-figure]) > code {
+    background-color: rgb(31 31 31) !important;
+    color: rgb(229 231 235) !important;
+    border-color: rgb(38 38 38);
+  }
+
+  .prose :where(span[data-rehype-pretty-code-figure]) > code span {
+    color: inherit !important;
+    background-color: transparent !important;
+  }
+
+  .prose :where(span[data-rehype-pretty-code-figure]) > code::before,
+  .prose :where(span[data-rehype-pretty-code-figure]) > code::after {
+    content: none !important;
+  }
 }
 
 @layer components {
