@@ -1,5 +1,6 @@
 import { h } from 'hastscript';
 import { remark } from 'remark';
+import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import rehypePrettyCode from 'rehype-pretty-code';
@@ -9,6 +10,7 @@ import rehypeInlineSvg from './rehypeInlineSvg';
 
 export default async function markdownToHtml(markdown: string) {
   const result = await remark()
+    .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypeInlineSvg)
     .use(rehypePrettyCode, {
