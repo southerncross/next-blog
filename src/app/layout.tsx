@@ -60,6 +60,11 @@ export function generateMetadata(): Metadata {
         en: localePath('en', canonical),
         'x-default': localePath('zh', canonical),
       },
+      types: {
+        'application/rss+xml': [
+          { url: localePath(locale, '/feed.xml'), title: `${SITE_NAME} RSS` },
+        ],
+      },
     },
     icons: {
       icon: [

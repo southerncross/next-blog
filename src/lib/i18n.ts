@@ -52,7 +52,12 @@ export type Messages = {
     cta: string;
     legacyHint: string;
   };
-  footer: { builtWith: string };
+  footer: {
+    builtWith: string;
+    rss: string;
+    rssCopied: string;
+    rssAria: string;
+  };
 };
 
 export const messages: Record<Locale, Messages> = {
@@ -94,7 +99,12 @@ export const messages: Record<Locale, Messages> = {
       cta: '回到首页',
       legacyHint: '或许你是想访问旧的博客文章？可以看这里：',
     },
-    footer: { builtWith: '使用 Next.js 构建' },
+    footer: {
+      builtWith: '使用 Next.js 构建',
+      rss: 'RSS',
+      rssCopied: '已复制',
+      rssAria: '复制 RSS 订阅链接',
+    },
   },
   en: {
     siteDescription: 'Tinkering, writing, and thinking out loud.',
@@ -135,7 +145,12 @@ export const messages: Record<Locale, Messages> = {
       cta: 'Go back home',
       legacyHint: 'Looking for an older post? Try the legacy site:',
     },
-    footer: { builtWith: 'Built with Next.js' },
+    footer: {
+      builtWith: 'Built with Next.js',
+      rss: 'RSS',
+      rssCopied: 'Copied',
+      rssAria: 'Copy RSS feed link',
+    },
   },
 };
 
