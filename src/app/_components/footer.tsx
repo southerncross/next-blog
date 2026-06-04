@@ -1,4 +1,5 @@
 import Container from '@/app/_components/container';
+import RssLink from '@/app/_components/rss-link';
 import { AUTHOR_NAME, GITHUB_URL } from '@/lib/constants';
 import { Locale, getMessages } from '@/lib/i18n';
 
@@ -27,6 +28,7 @@ export function Footer({ locale = 'zh' }: Props) {
             >
               GitHub
             </a>
+            <RssLink locale={locale} />
             <span className="font-mono text-xs text-ink-subtle dark:text-carbon-muted">
               {t.footer.builtWith}
             </span>
