@@ -7,12 +7,14 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeInlineSvg from './rehypeInlineSvg';
+import rehypeWrapTable from './rehypeWrapTable';
 
 export default async function markdownToHtml(markdown: string) {
   const result = await remark()
     .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypeInlineSvg)
+    .use(rehypeWrapTable)
     .use(rehypePrettyCode, {
       theme: 'github-dark-dimmed',
       defaultLang: 'ansi',
