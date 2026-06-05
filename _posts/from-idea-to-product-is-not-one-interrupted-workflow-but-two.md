@@ -23,13 +23,13 @@ topics: ['agentic-workflow']
 
 **第二段：从定稿到上线（Demo → Product）。** 核心问题是"怎么做"。目标已经确定，剩下的工作是把它变成可交付的产品。这段工作的本质是执行——步骤可以预先规划，质量可以标准化，进度可以度量。但奇怪的是，agent 在这里反而卡住了。
 
-| | 想法→定稿 | 定稿→上线 |
-|--|--|--|
-| 核心问题 | 做什么 | 怎么做 |
-| 确定性 | 低，随时可能推翻 | 高，方向已定 |
-| 工作模式 | 探索，试错 | 执行，收敛 |
+|            | 想法→定稿            | 定稿→上线              |
+| ---------- | -------------------- | ---------------------- |
+| 核心问题   | 做什么               | 怎么做                 |
+| 确定性     | 低，随时可能推翻     | 高，方向已定           |
+| 工作模式   | 探索，试错           | 执行，收敛             |
 | Agent 表现 | 产出极强，判断帮不上 | 每步都能做，整体不可靠 |
-| 人的角色 | 判断者（决定方向） | 审核者（确认结果） |
+| 人的角色   | 判断者（决定方向）   | 审核者（确认结果）     |
 
 这两段工作有什么本质区别？直觉上，第二段应该更容易——目标确定了，步骤明确了，agent 每一步也都能做。那为什么第一阶段反而更顺利？
 
@@ -123,7 +123,7 @@ Claude Code 的这个路径，看起来像是"先派生再固化"：脚本在动
 
 ## 参考文献
 
-- Anthropic Research. *Building Effective Agents*. https://www.anthropic.com/research/building-effective-agents — 论述 workflow 从 dynamic 到 static 的演进路径；composable patterns 作为 agent 可靠性基础设施
+- Anthropic Research. _Building Effective Agents_. https://www.anthropic.com/research/building-effective-agents — 论述 workflow 从 dynamic 到 static 的演进路径；composable patterns 作为 agent 可靠性基础设施
 - WeZZard (@realWeZZard). X/Twitter post (2026-06-04). https://x.com/realWeZZard/status/2062105579649380748 — 触发本文讨论的推文；关于 demo 与 product 之间结构性差异的实践观察
-- Breunig, D. (2026). *Two Beliefs About Coding Agents*. — "personal software vs capital-P Products" 区分；demo 环境消除失败条件的论述
-- Anthropic. *Claude Code Dynamic Workflows* (2026-05-28, v2.1.154). https://docs.anthropic.com/en/docs/claude-code/workflows — dynamic workflow 核心机制：Claude 写 JavaScript 编排脚本，runtime 执行，脚本可迭代修改，验证后可保存为 slash command 复用
+- Breunig, D. (2026). _Two Beliefs About Coding Agents_. — "personal software vs capital-P Products" 区分；demo 环境消除失败条件的论述
+- Anthropic. _Claude Code Dynamic Workflows_ (2026-05-28, v2.1.154). https://docs.anthropic.com/en/docs/claude-code/workflows — dynamic workflow 核心机制：Claude 写 JavaScript 编排脚本，runtime 执行，脚本可迭代修改，验证后可保存为 slash command 复用
