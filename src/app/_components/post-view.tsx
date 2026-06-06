@@ -8,6 +8,7 @@ import { PostBody } from '@/app/_components/post-body';
 import { PostHeader } from '@/app/_components/post-header';
 import Comments from '@/app/_components/comments';
 import Reactions from '@/app/_components/reactions';
+import PostShare from '@/app/_components/post-share';
 import ReadingProgress from '@/app/_components/reading-progress';
 
 type Props = {
@@ -47,6 +48,7 @@ export async function PostView({ slug, locale }: Props) {
           className="anim-fade-up mt-16 border-t border-outline-subtle pt-10 dark:border-carbon-border"
           style={{ animationDelay: '320ms' }}
         >
+          <PostShare slug={post.slug} locale={locale} title={post.title} />
           <Suspense>
             <Reactions slug={post.slug} locale={locale} />
           </Suspense>

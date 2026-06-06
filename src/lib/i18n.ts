@@ -30,6 +30,15 @@ export type Messages = {
     fallbackCalloutLink: string;
   };
   reactions: { label: string; add: string };
+  share: {
+    label: string;
+    copy: string;
+    copied: string;
+    ariaCopy: string;
+    native: string;
+    x: string;
+    weibo: string;
+  };
   comments: {
     label: string;
     title: string;
@@ -77,6 +86,15 @@ export const messages: Record<Locale, Messages> = {
       fallbackCalloutLink: '查看中文版',
     },
     reactions: { label: '— 表情', add: '添加表情' },
+    share: {
+      label: '— 分享',
+      copy: '复制链接',
+      copied: '已复制',
+      ariaCopy: '复制文章链接',
+      native: '分享',
+      x: '分享到 X',
+      weibo: '分享到微博',
+    },
     comments: {
       label: '— 评论',
       title: '讨论',
@@ -123,6 +141,15 @@ export const messages: Record<Locale, Messages> = {
       fallbackCalloutLink: 'View Chinese version',
     },
     reactions: { label: '— Reactions', add: 'Add reaction' },
+    share: {
+      label: '— Share',
+      copy: 'Copy link',
+      copied: 'Copied',
+      ariaCopy: 'Copy article link',
+      native: 'Share',
+      x: 'Share on X',
+      weibo: 'Share on Weibo',
+    },
     comments: {
       label: '— Comments',
       title: 'Discussion',
