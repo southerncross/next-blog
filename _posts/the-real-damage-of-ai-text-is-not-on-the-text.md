@@ -89,7 +89,7 @@ AI 正在做的事情属于同一个序列：它把"制作成本"这个信号打
 
 ## 参考文献
 
-- Bedard, J. et al. (2026). *AI Brain Fry: Managing Cognitive Overload in the Age of Artificial Intelligence.* Harvard Business Review. 1488 名美国员工调查，14% 报告 AI brain fry，工程领域 18%，与 33% 更高决策疲劳、39% 更高错误率、39% 更高离职意愿相关。
-- Zhu, T., Weissburg, I., Zhang, K., & Wang, W. Y. (2024). *Human Bias in the Face of AI: Examining Human Judgment Against Text Labeled as AI Generated.* arXiv:2410.03723. 无标签时检测准确率接近随机，标签可操控判断。
-- Nature Scientific Reports (2024). *Human intelligence can safeguard against artificial intelligence.* 社交媒体和智能手机重度使用者分辨 AI 文本能力更差，暴露产生习惯化而非训练。
-- Sourati, Z., Ziabari, A. S., & Dehghani, M. (2025). *The Homogenizing Effect of Large Language Models on Human Expression.* Trends in Cognitive Sciences. 文体多样性在 Reddit、科学写作和期刊中可测量下降，反馈循环具有递归结构。
+- Bedard, J. et al. (2026). _AI Brain Fry: Managing Cognitive Overload in the Age of Artificial Intelligence._ Harvard Business Review. 1488 名美国员工调查，14% 报告 AI brain fry，工程领域 18%，与 33% 更高决策疲劳、39% 更高错误率、39% 更高离职意愿相关。
+- Zhu, T., Weissburg, I., Zhang, K., & Wang, W. Y. (2024). _Human Bias in the Face of AI: Examining Human Judgment Against Text Labeled as AI Generated._ arXiv:2410.03723. 无标签时检测准确率接近随机，标签可操控判断。
+- Nature Scientific Reports (2024). _Human intelligence can safeguard against artificial intelligence._ 社交媒体和智能手机重度使用者分辨 AI 文本能力更差，暴露产生习惯化而非训练。
+- Sourati, Z., Ziabari, A. S., & Dehghani, M. (2025). _The Homogenizing Effect of Large Language Models on Human Expression._ Trends in Cognitive Sciences. 文体多样性在 Reddit、科学写作和期刊中可测量下降，反馈循环具有递归结构。
