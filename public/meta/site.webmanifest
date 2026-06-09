@@ -11,6 +11,11 @@
       "src": "/meta/android-icon-96x96.png",
       "sizes": "96x96",
       "type": "image/png"
+    },
+    {
+      "src": "/meta/android-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "theme_color": "#000000",
