@@ -78,7 +78,7 @@ export function generateMetadata(): Metadata {
         },
       ],
       shortcut: '/meta/favicon.ico',
-      apple: '/meta/apple-touch-icon.png',
+      apple: '/meta/android-icon-192x192.png',
     },
     manifest: '/meta/site.webmanifest',
   };

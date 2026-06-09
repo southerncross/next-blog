@@ -3,13 +3,13 @@
   "short_name": "Li's Blog",
   "icons": [
     {
-      "src": "/meta/android-chrome-192x192.png",
+      "src": "/meta/android-icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/meta/android-chrome-512x512.png",
-      "sizes": "512x512",
+      "src": "/meta/android-icon-96x96.png",
+      "sizes": "96x96",
       "type": "image/png"
     }
   ],
