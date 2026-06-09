@@ -77,30 +77,32 @@ export async function getReactionsBySlug(slug: string) {
     }>`
     SELECT emoji, count, slug
     FROM reactions
-    WHERE slug = ${realSlug} ORDER BY created_at DESC
+    WHERE slug = ${realSlug} ORDER BY created_at ASC
   `;
 
-    const reactions = data.rows.map((row) => {
+    const savedReactions = data.rows.map((row) => {
       return {
         emoji: row.emoji,
-        count: row.count,
+        count: Number(row.count),
         slug: row.slug,
       } as Reaction;
     });
 
     const defaultEmojis = ['👍', '❤️', '🤔', '🤡'];
-    const savedEmojiSet = new Set(reactions.map((x) => x.emoji));
+    const savedEmojiMap = new Map(savedReactions.map((x) => [x.emoji, x]));
 
-    defaultEmojis
-      .reverse()
-      .filter((x) => !savedEmojiSet.has(x))
-      .forEach((emoji) => {
-        reactions.unshift({
-          emoji,
-          count: 0,
-          slug: realSlug,
-        });
-      });
+    // Build a stable base order (default emojis first, then custom ones by
+    // creation time) so equal-count reactions keep a predictable position.
+    const reactions: Reaction[] = [
+      ...defaultEmojis.map(
+        (emoji) =>
+          savedEmojiMap.get(emoji) ?? { emoji, count: 0, slug: realSlug },
+      ),
+      ...savedReactions.filter((x) => !defaultEmojis.includes(x.emoji)),
+    ];
+
+    // Stable sort by click count, highest first.
+    reactions.sort((a, b) => b.count - a.count);
 
     return reactions;
   } catch (e) {
