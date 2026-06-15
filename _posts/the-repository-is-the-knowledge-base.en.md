@@ -11,7 +11,7 @@ This is the most upstream link in an agentic workflow: it takes a product doc an
 
 But the workflow never got dialed in. I was stuck in that loop, unable to get out.
 
-The colleague responsible for downstream code generation could not wait any longer. The technical spec he received was poor quality, so he had no choice but to supplement a pile of extra information through several rounds of conversation himself, and at least got code generation running, committed some baseline scaffolding code, and merged it into the trunk. By the time I wanted to run the workflow again to see how it did, that code was already in the repo. The agent's first step in producing a technical spec is to survey the current state—it read that code, and then output a technical spec based on it.
+The colleague responsible for downstream code generation could not wait any longer. The technical spec she received was poor quality, so she had no choice but to supplement a pile of extra information through several rounds of conversation herself, and at least got code generation running, committed some baseline scaffolding code, and merged it into the trunk. By the time I wanted to run the workflow again to see how it did, that code was already in the repo. The agent's first step in producing a technical spec is to survey the current state—it read that code, and then output a technical spec based on it.
 
 In a sense, it looked at the answer before answering the question.
 
@@ -35,7 +35,7 @@ This pivot is not a feature upgrade, it is a change of category. A sandbox tool 
 
 But there is something here that is easy to overlook. v0's pivot demonstrates the value of the repository; it does not explain how the repository became valuable.
 
-Back to my original scenario. I tuned the workflow for a few rounds, the downstream colleague could not wait, got the code running himself, and merged it into the trunk. This interfered with my testing, but from another angle, his code made the repository a little thicker. The directory structure grew, the code patterns grew, and the agent had more to read.
+Back to my original scenario. I tuned the workflow for a few rounds, the downstream colleague could not wait, got the code running herself, and merged it into the trunk. This interfered with my testing, but from another angle, her code made the repository a little thicker. The directory structure grew, the code patterns grew, and the agent had more to read.
 
 The iteration strategy of a team I was previously on went like this: first everyone generates the workflow for their own node, then starting from the most upstream node, you run the whole thing end to end. No matter how bad the output is, that is the first version of the code. Then everyone manually, semi-automatically, corrects it into the final expected shape. Along the way you record what information you supplemented and what problems came up, and afterward you do a retrospective.
 
