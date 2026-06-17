@@ -43,8 +43,7 @@
   }
 
   .prose :where(a, p, li) {
-    overflow-wrap: break-word;
-    word-break: break-word;
+    overflow-wrap: anywhere;
   }
 
   .prose :where(span[data-rehype-pretty-code-figure]) > code {
