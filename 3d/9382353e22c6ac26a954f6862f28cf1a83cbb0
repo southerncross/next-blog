@@ -1,0 +1,28 @@
+_posts/ai-era-engineering-leveling-standard.md
+  h_1e501e7a361e9d 1-140
+_posts/ai-era-engineering-leveling-standard.en.md
+  s_eea666e5dbd2db::t_8abe1b48a5745d 1-140
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "3d9382353e22c6ac26a954f6862f28cf1a83cbb0",
+  "prompts": {},
+  "humans": {
+    "h_1e501e7a361e9d": {
+      "author": "Lishunyang <lishunyang@dcarlife.com>"
+    }
+  },
+  "sessions": {
+    "s_eea666e5dbd2db": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "204394f1-ff41-45f0-b60e-568263ab5269",
+        "model": "unknown"
+      },
+      "human_author": "Lishunyang <lishunyang@dcarlife.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
