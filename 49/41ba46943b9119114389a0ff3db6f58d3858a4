@@ -1,0 +1,23 @@
+src/app/robots.ts
+  s_8f4173564647e2::t_023a0bfa28c63e 1-18
+src/app/sitemap.ts
+  s_8f4173564647e2::t_259687218e3f0c 1-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "4941ba46943b9119114389a0ff3db6f58d3858a4",
+  "prompts": {},
+  "sessions": {
+    "s_8f4173564647e2": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "91393ddb-bfd9-440c-86d7-f001ac6e9727",
+        "model": "unknown"
+      },
+      "human_author": "Lishunyang <lishunyang@dcarlife.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
