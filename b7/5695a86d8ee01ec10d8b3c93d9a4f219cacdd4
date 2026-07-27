@@ -1,0 +1,23 @@
+_posts/ai-era-leadership-orchestrator.en.md
+  s_0092cc2541c010::t_360972980f2752 1-150
+_posts/ai-era-leadership-orchestrator.md
+  s_0092cc2541c010::t_aa8723a3b59632 1-150
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "b75695a86d8ee01ec10d8b3c93d9a4f219cacdd4",
+  "prompts": {},
+  "sessions": {
+    "s_0092cc2541c010": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "b3126836-62c4-4fd6-82fa-00a60d5c4c72",
+        "model": "unknown"
+      },
+      "human_author": "Lishunyang <lishunyang@dcarlife.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
