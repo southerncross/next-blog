@@ -1,0 +1,23 @@
+_posts/ai-writes-faster-codebase-rots-faster.en.md
+  s_5621b0d179df61::t_b14dea8333aa6f 1-200
+_posts/ai-writes-faster-codebase-rots-faster.md
+  s_5621b0d179df61::t_1e8997451dd904 1-200
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "e42ab4b82cdef86405cf58c552d8df5af790647e",
+  "prompts": {},
+  "sessions": {
+    "s_5621b0d179df61": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "27ad13ee-d0d8-4cb3-82e0-25a711cdc600",
+        "model": "unknown"
+      },
+      "human_author": "Lishunyang <lishunyang@dcarlife.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
