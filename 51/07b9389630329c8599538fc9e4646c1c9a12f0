@@ -1,0 +1,23 @@
+.npmrc
+  s_e9be5e0a40879c::t_e8d1cefdb2b181 2-6
+AGENTS.md
+  s_e9be5e0a40879c::t_5a2e16168a36c8 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "5107b9389630329c8599538fc9e4646c1c9a12f0",
+  "prompts": {},
+  "sessions": {
+    "s_e9be5e0a40879c": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "df12e5f3-95fc-4f1e-aa22-235b768101b4",
+        "model": "unknown"
+      },
+      "human_author": "Lishunyang <lishunyang@dcarlife.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
