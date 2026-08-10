@@ -5,7 +5,7 @@ Operational guide for AI coding agents (Droid, Claude, Cursor, Copilot, etc.) wo
 ## TL;DR for agents
 
 - Package manager: **pnpm** (lockfile is `pnpm-lock.yaml`). Never use `npm`/`yarn`.
-- Node: 24.x required (Vercel no longer supports Node 18.x; pinned via `engines` in `package.json` and `.nvmrc`).
+- Node: 24.x required (Vercel no longer supports Node 18.x; pinned via `engines` in `package.json` and `.nvmrc`). `.npmrc` sets `use-node-version=24.19.0`, so `pnpm run *` and `pnpm node` use that exact version even when a different Node is on `PATH`; `engine-strict=true` turns a mismatch into a hard error instead of a warning. Run everything through pnpm rather than a bare `node`.
 - Always run before declaring a task done:
   ```bash
   pnpm install --frozen-lockfile
