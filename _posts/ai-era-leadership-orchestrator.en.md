@@ -5,8 +5,6 @@ description: 'AI has not made leaders disappear, but it has zeroed out the ones 
 topics: ['agentic-workflow']
 ---
 
-# Your Leader Is Basically a Relay
-
 Last month I had dinner with a friend. He leads a team of twenty at a big company, and his company is pushing an AI-first transformation. He was a little rattled.
 
 "You know what I actually do every day? In the morning I read Feishu and translate the decisions from above into something the people below can understand. In the afternoon I read the weekly reports and translate the progress from below into the format the people above want to see. In between there are a few meetings where I coordinate whether team A or team B goes first."
