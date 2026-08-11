@@ -1,0 +1,23 @@
+_posts/who-is-thinking-for-you.en.md
+  s_ed88709c18880e::t_bffa4dc22d4a17 1-130
+_posts/who-is-thinking-for-you.md
+  s_ed88709c18880e::t_9ca05814ceb392 1-130
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "58de08a2f8c1b50880df34f53a3c462324a2c871",
+  "prompts": {},
+  "sessions": {
+    "s_ed88709c18880e": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "8b4827f5-26fa-404a-af18-e8dbac61d067",
+        "model": "unknown"
+      },
+      "human_author": "Lishunyang <lishunyang@dcarlife.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
