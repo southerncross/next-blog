@@ -1,0 +1,23 @@
+_posts/where-cognition-actually-goes.en.md
+  s_02b634c0b224af::t_2ab667afe4e5a6 1-78
+_posts/where-cognition-actually-goes.md
+  s_02b634c0b224af::t_5b9cea7b9a0a0b 1-78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "932323354b307e0198847186473a75e50348f489",
+  "prompts": {},
+  "sessions": {
+    "s_02b634c0b224af": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "6b921086-473e-47ec-b074-00fb73a60718",
+        "model": "unknown"
+      },
+      "human_author": "Lishunyang <lishunyang@dcarlife.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
